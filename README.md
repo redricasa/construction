@@ -22,3 +22,7 @@ DBMS: MySQL
 2️⃣ Figure out what entity(ies) along with their attributes to build out - sketch out [wireframe](https://miro.com/app/board/uXjVMmvSGic=/?share_link_id=713799459355) at the same time 
 3️⃣ Build table(s) in MySQL Workbench that shows the columns/attributes and data types (along with the relationship type if there's multiple tables)
 4️⃣ Build Front-end with JavaScript, CSS & HTML with Materialize css as a framework
+
+## Terminology
+- Tools: tools are used to build the house but doesn't become part of the structure eg. drill, hard hats, etc...
+- Materials: materials that will become a part of the house structure eg. wires, HVAC, cement, etc...
