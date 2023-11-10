@@ -3,88 +3,119 @@ import React from "react";
 const Materials = () => {
     return (
         <>
+            
         <form>
             {/* bulk purchase selection */}
-            <div className="form-group">
-            <label htmlFor="exampleFormControlSelect2">Bulk Purchase</label>
-            <select className="form-control" id="bulk">
-                <option>Yes</option>
-                <option>No</option>
-            </select>
-            </div>
-            {/* condition selection */}
-            <div className="form-group">
-            <label htmlFor="exampleFormControlSelect2">Condition</label>
-            <select className="form-control form-control-sm" id="condition">
-                <option>Used</option>
-                <option>New</option>
-            </select>
+            <div className="container">
+            <h3>Materials Inventory</h3>
+            <p>Materials: things that will become a part of the house</p>
+            {/* row for the 2 columns */}
+            <div className="row">
+                {/* ---------- first column -------------- */}
+                <div className="col-sm">
+
+                <label>Item Name</label>
+                <input className="form-control"></input>
+
+                <label htmlFor="bulkpurchase">Bulk Purchase</label>
+                <select className="form-control" id="bulk">
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+
+                <label>Location</label>
+                <input className="form-control"></input>
+
+                <label>Purchase Date</label>
+                <input className="form-control"></input>
+
+                <label>Energy Score</label>
+                <input className="form-control"></input>
+
+                <label>Person checking OUT</label>
+                <input className="form-control"></input>
+
+                <label>Date checked OUT</label>
+                <input className="form-control"></input>
+
             </div>
 
-            {/* street address entry start*/}
-            <div className="container mt-12">
-            <div className="mb-8">
-                <label htmlFor="street" className="form-label">
-                Street
-                </label>
-                <input
-                type="text"
-                className="form-control"
-                id="street"
-                name="street"
-                // value={address.street}
-                // onChange={handleChange}
-                />
-            </div>
+                
+                {/* ----------second column --------------- */}
+            <div className="container col-sm">
 
-            <div className="mb-3">
-                <label htmlFor="city" className="form-label">
-                City
-                </label>
-                <input
-                type="text"
-                className="form-control"
-                id="city"
-                name="city"
-                // value={address.city}
-                // onChange={handleChange}
-                />
-            </div>
+                <label>Item ID</label>
+                <input className="form-control"></input>
 
-            <div className="mb-3">
-                <label htmlFor="state" className="form-label">
-                State
-                </label>
-                <input
-                type="text"
-                className="form-control"
-                id="state"
-                name="state"
-                // value={address.state}
-                // onChange={handleChange}
-                />
-            </div>
+                <label>Price</label>
+                <input className="form-control"></input>
 
-            <div className="mb-3">
-                <label htmlFor="zipcode" className="form-label">
-                Zipcode
+                <label>Quantity</label>
+                <input className="form-control"></input>
+
+                <label>Purchase Order #</label>
+                <input className="form-control"></input>
+
+                {/* street address entry start*/}
+                <label htmlFor="address" className="form-label">
+                    Address
                 </label>
                 <input
-                type="text"
-                className="form-control"
-                id="zipcode"
-                name="zipcode"
-                // value={address.zipcode}
-                // onChange={handleChange}
+                    type="text"
+                    className="form-control"
+                    id="street"
+                    name="street"
+                    placeholder="street"
+                    // value={address.street}
+                    // onChange={handleChange}
                 />
+                
+                <div className="row">
+                    
+                    <div className="col-5" >
+                        <input
+                        type="text"
+                        className="form-control"
+                        id="city"
+                        name="city"
+                        placeholder="city"
+                        // value={address.city}
+                        // onChange={handleChange}
+                        />
+                    </div>
+                    <div className="col-3">
+                        <input
+                        type="text"
+                        className="form-control"
+                        id="state"
+                        name="state"
+                        placeholder="state"
+                        // value={address.state}
+                        // onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className="col-3" >
+                        <input
+                        type="text"
+                        className="form-control"
+                        id="zipcode"
+                        name="zipcode"
+                        placeholder="zip code"
+                        // value={address.zipcode}
+                        // onChange={handleChange}
+                        />
+                    </div>
+                </div>
+                {/* street address entry end */}
+                </div>
             </div>
-            
-            {/* street address entry end */}
-            {/* submit button */}
             <button type="button" className="btn btn-info">
-            Submit
+                Submit
             </button>
-            </div>
+        </div>
+
+            {/* submit button */}
         </form>
         </>
     );
