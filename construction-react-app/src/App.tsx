@@ -1,7 +1,10 @@
-import Message from "./message";
+import Materials from "./components/Material";
+import Tools from "./components/Tools"
+
 
 function App() {
-  return <div><Message /> </div>
+  return <div><Materials /> </div>
+  // add Nav Bar with Materials and Tools and Login
 }
 
 export default App
