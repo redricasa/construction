@@ -53,7 +53,7 @@ const registerUser = asyncHandler(async (req, res) => {
     
 });
 
-// @desc register new user
+// @desc logout user by deleting jwt
 // route POST /api/users/logout
 // @access public
 const logoutUser = asyncHandler(async (req, res) => {
