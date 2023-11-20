@@ -1,9 +1,10 @@
-import Materials from "./components/Material";
-import Tools from "./components/Tools"
+import Materials from "./screens/MaterialsScreen";
+import Tools from "./screens/ToolsScreen";
+import Navbar from "./components/Navbar";
 
 
 function App() {
-  return <div><Materials /> </div>
+  return <div><Navbar /> </div>
   // add Nav Bar with Materials and Tools and Login
 }
 
