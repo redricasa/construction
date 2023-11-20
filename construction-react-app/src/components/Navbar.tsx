@@ -8,30 +8,26 @@ const Navbar = () => {
                 <a className="navbar-brand" href="#">
                     Construction Inventory Management
                 </a>
-                
-                
-                <div className="collapse navbar-collapse" id="navbarText">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">
-                            Home
-                            </a>
-                        </li>
-                    
-                    </ul>
-                    
-                </div>
-            </div>
-            {/* sign in/up start ---*/}
-            <form className="container-fluid justify-content-start">
-            <button className="btn btn-outline-warning me-2" type="button">
-                Log In
-            </button>
-            <button className="btn btn-sm btn-outline-warning" type="button">
-                Register
-            </button>
-            </form>
+            
+                <form className="container-fluid justify-content-start">
+                    <button className="btn btn-outline-light me-2" type="button">
+                        Tools
+                    </button>
+                    <button className="btn btn-outline-light" type="button">
+                        Materials
+                    </button>
+                </form>
+                {/* sign in/up start ---*/}
+                <form className="container-fluid justify-content-start">
+                    <button className="btn btn-outline-warning me-2" type="button">
+                        Log In
+                    </button>
+                    <button className="btn btn-sm btn-outline-info" type="button">
+                        Register
+                    </button>
+                </form>
             {/* sign in/up end--- */}
+            </div>
         </nav>
         
         </>
