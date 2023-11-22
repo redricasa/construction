@@ -16,22 +16,42 @@ const LoginUser = () => {
 
     return (
 
-        <>
-        <div className="d-flex justify-content-center align-items-center min-vh-100">
-        <h4>Log into your Account</h4>
-            <form className=" text-center p-5 border ">
-                
-                <label>Email address</label>
-                <input type="email" className="form-control"  placeholder="Enter email"></input>
+        <FormContainer>
+            <div className="d-flex justify-content-center align-items-center min-vh-100 row">
+            <h4>Log into your Account</h4>
+            <Form className=" text-center p-5 border col" onSubmit={ submitHandler }>
+                <Form.Group className="my-2" controlId="email">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control 
+                        type="email" 
+                        placeholder="Enter email"
+                        value={email}
+                        onChange={ (e) => setEmail(e.target.value)}
+                    ></Form.Control>
+                </Form.Group>
+                <Form.Group className="my-2" controlId="email">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control 
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={ (e) => setPassword(e.target.value)}
+                    ></Form.Control>
+                </Form.Group>
+                <Button type="submit" variant='primary' className="mt-3">
+                    Sign In 😊
+                </Button>
 
-                <label>Password</label>
-                <input type="password" className="form-control"  placeholder="Password"></input>
-        
-            </form>
+                <Row className="py-3">
+                    <Col>
+                    Don't have an account? <Link to='/register'>Register</Link>
+                    </Col>
+                </Row>
+            </Form>
         </div>
+
+        </FormContainer>
         
-        
-        </>
     )
 
 
