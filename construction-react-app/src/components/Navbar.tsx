@@ -3,7 +3,7 @@ import React from "react";
 const Navbar = () => {
     return (
         <>
-        <nav className="navbar navbar-light bg-success">
+        <nav className="navbar sticky-top navbar-light bg-success">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
                     Construction Inventory Management
