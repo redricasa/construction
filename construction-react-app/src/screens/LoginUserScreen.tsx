@@ -1,6 +1,19 @@
-import React from "react";
+import {useState} from "react";
+import { Link } from 'react-router-dom';
+import { Form, Button, Row, Col } from 'react-bootstrap';
+import FormContainer from "../components/FormContainer";
+
 
 const LoginUser = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword]= useState('');
+
+    const submitHandler = async (e: React.FormEvent) => {
+        e.preventDefault();
+        console.log('submit');
+        
+    }
+
     return (
 
         <>
