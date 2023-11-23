@@ -8,6 +8,7 @@ const Hero = () => {
         <div className="d-flex justify-content-center align-items-center min-vh-100">
             <h6>Login or Register</h6>
             <form className=" text-center p-5 border border-dark rounded bg-dark">
+            <Container></Container>
                 <LinkContainer to='/login'>
                     <Nav.Link  >
                         <button className="btn btn-outline-warning me-2" type="button">

@@ -19,7 +19,8 @@ const Register = () => {
     }
 
     return (
-        <FormContainer>
+        
+        <>
             <div className="d-flex justify-content-center align-items-center min-vh-100 row">
             <h4>Create a new Account</h4>
             <Form className=" text-center p-5 border col" onSubmit={ submitHandler }>
@@ -69,9 +70,9 @@ const Register = () => {
                     </Col>
                 </Row>
             </Form>
-        </div>
-
-        </FormContainer>
+            </div>
+        </>
+        
     )
 
 

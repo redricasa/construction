@@ -8,6 +8,7 @@ const Header = () => {
         <header>
         <nav className="navbar sticky-top navbar-light bg-secondary">
             <div className="container-fluid ">
+                <Container>
                 <LinkContainer to='/'>
                     <Navbar.Brand className="navbar-brand" >Construction Inventory Management</Navbar.Brand>
                 </LinkContainer>
@@ -43,6 +44,7 @@ const Header = () => {
                         </button>
                     </Nav.Link>
                 </LinkContainer>
+                </Container>
             {/* sign in/up end--- */}
             </div>
         </nav>

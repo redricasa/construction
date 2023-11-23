@@ -15,11 +15,10 @@ const LoginUser = () => {
     }
 
     return (
-
-        <FormContainer>
-            <div className="d-flex justify-content-center align-items-center min-vh-100 row">
+        <>
+        <div className="d-flex justify-content-center align-items-center min-vh-100 row">
             <h4>Log into your Account</h4>
-            <Form className=" text-center p-5 border col" onSubmit={ submitHandler }>
+            <Form className=" text-center p-5 border" onSubmit={ submitHandler }>
                 <Form.Group className="my-2" controlId="email">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control 
@@ -41,17 +40,11 @@ const LoginUser = () => {
                 <Button type="submit"  variant='primary' className="mt-3">
                     Sign In 
                 </Button>
-
-                <Row className="py-3">
-                    <Col>
                     Don't have an account? <Link to='/register'>Register</Link>
-                    </Col>
-                </Row>
             </Form>
         </div>
+        </>
 
-        </FormContainer>
-        
     )
 
 
