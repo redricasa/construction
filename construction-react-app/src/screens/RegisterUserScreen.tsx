@@ -19,7 +19,7 @@ const Register = () => {
     }
 
     return (
-        
+
         <>
             <div className="d-flex justify-content-center align-items-center min-vh-100 row">
             <h4>Create a new Account</h4>
@@ -52,7 +52,7 @@ const Register = () => {
                     ></Form.Control>
                 </Form.Group>
                 <Form.Group className="my-2" controlId="confirmPassword">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label>Confirm Password</Form.Label>
                     <Form.Control 
                         type="password"
                         placeholder="Confirm Password"
