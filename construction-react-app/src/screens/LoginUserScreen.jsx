@@ -1,10 +1,10 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import {useDispatch, useSelector} from 'react-redux';
 import { useLoginMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
-
+import {toast} from 'react-toastify'
 
 
 const LoginUser = () => {
@@ -18,9 +18,21 @@ const LoginUser = () => {
 
     const { userInfo } = useSelector((state) => state.auth)//'state' had issues in .tsx
 
+    useEffect(() => {
+        if (userInfo) {
+            navigate('/')
+        }
+    }, [navigate, userInfo])
+
     const submitHandler = async (e) => {
         e.preventDefault();
-        console.log('submit');
+        try{
+            const res = await login({email, password}).unwrap();
+            dispatch(setCredentials({...res}));
+            navigate('/');
+        } catch (err) {
+            toast.error(err?.data?.message || err.error)
+        }
         
     }
 

@@ -12,7 +12,7 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword]= useState('');
 
 
-    const submitHandler = async (e: React.FormEvent) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
         console.log('submit');
         
