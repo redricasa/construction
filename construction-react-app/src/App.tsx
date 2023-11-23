@@ -14,13 +14,11 @@ function App() {
   return (
 
     <>
-
       <Header />
-      <LoginUser />
-      {/* <Container className="my-2">
+      <Container className="my-2">
         < Outlet />
-      </Container> */}
-      
+      </Container>
+      <Footer />
     </>
 
   ) 
