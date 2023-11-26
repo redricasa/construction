@@ -1,5 +1,5 @@
 import express from 'express';
-import { authUser, 
+import { authUser,  
     registerUser,
     logoutUser,
     updateUserprofile,

@@ -43,6 +43,9 @@ const toolSchema = new mongoose.Schema({
         },
     }
 
+},
+{
+    timestamps: true
 });
 
 const Tool = mongoose.model('Tool', toolSchema);

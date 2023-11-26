@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const materialSchema = new mongoose.Schema({
     itemName: String,
     itemId: String,
-    bulk: Boolean,
+    bulk: {
+        type: String,
+        enum: ['Yes', 'No'],
+    },
     price: {
         type: Number,
         get: (v) => v.toFixed(2),
@@ -40,6 +43,9 @@ const materialSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     }
+},
+{
+    timestamps: true
 });
 
 const Material = mongoose.model('Material', materialSchema);
