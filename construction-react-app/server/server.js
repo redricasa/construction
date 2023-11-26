@@ -6,6 +6,9 @@ import {notFound, errorHandler} from './middleware/errorMiddleware.js';
 import connectDB from "./config/db.js";
 const port = process.env.PORT || 5000;
 import userRoutes from './routes/userRoutes.js';
+import materialRoutes from './routes/materialRoutes.js'
+
+
 
 connectDB();
 
@@ -21,6 +24,7 @@ app.use(cookieParser());
 // - GET /api/users/profile get user profile
 // - PUT /api/users/profile update profile
 app.use('/api/users', userRoutes);
+app.use('/api/material', materialRoutes);
 app.get('/', (req, res) => res.send('Server is ready'));
 
 app.use(notFound);

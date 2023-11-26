@@ -23,11 +23,11 @@ const Tools = () => {
                     <option>New</option>
                 </select>
 
-                <label>Person checking OUT</label>
+                {/* <label>Person checking OUT</label>
                 <input className="form-control"></input>
 
                 <label>Date checked OUT</label>
-                <input className="form-control"></input>
+                <input className="form-control" placeholder="YYYY-mm-dd"></input> */}
 
                 <label>Amount Checked OUT</label>
                 <input className="form-control"></input>
@@ -46,13 +46,11 @@ const Tools = () => {
                 <label>Price</label>
                 <input className="form-control"></input>
 
-                {/* street address entry start*/}
-
-                <label>Person checking IN</label>
+                {/* <label>Person checking IN</label>
                 <input className="form-control"></input> 
 
                 <label>Date checked IN</label>
-                <input className="form-control"></input>
+                <input className="form-control" placeholder="YYYY-mm-dd"></input> */}
 
                 <label htmlFor="address" className="form-label">
                     Address
@@ -107,7 +105,6 @@ const Tools = () => {
             {/* submit button */}
         </form>
         </>
-  )
-}
+)}
 
 export default Tools;

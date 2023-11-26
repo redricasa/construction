@@ -27,16 +27,16 @@ const Materials = () => {
                 <input className="form-control"></input>
 
                 <label>Purchase Date</label>
-                <input className="form-control"></input>
+                <input className="form-control" placeholder="YYYY-mm-dd"></input>
 
                 <label>Energy Score</label>
                 <input className="form-control"></input>
 
-                <label>Person checking OUT</label>
+                {/* <label>Person checking OUT</label>
                 <input className="form-control"></input>
 
                 <label>Date checked OUT</label>
-                <input className="form-control"></input>
+                <input className="form-control" placeholder="YYYY-mm-dd"></input> */}
 
             </div>
 

@@ -69,7 +69,6 @@ const logoutUser = asyncHandler(async (req, res) => {
 // @access private
 // TODO- postman displays status 500
 const getUserprofile = asyncHandler(async (req, res) => {
-    console.log("req.user for GET request to display user profile of profile logged in -->", req.user)
     const user = {
         _id: req.user._id,
         name: req.user.name,
@@ -83,7 +82,6 @@ const getUserprofile = asyncHandler(async (req, res) => {
 // route PUT /api/users/profile
 // @access private
 const updateUserprofile = asyncHandler(async (req, res) => {
-    console.log("req.user for PUT request to UPDATE user profile of profile logged in -->", req.user)// logs out null when PUT req sent
     const user = await User.findById(req.user._id);
     if (user) {
         user.name = req.body.name || user.name;

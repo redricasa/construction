@@ -1,10 +1,13 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const materialController = require('../controllers/materialController');
+import { createMaterial, 
+    getMaterialById,
+    updateMaterial} from '../controllers/materialController.js'; 
 
-router.post('/create', materialController.createMaterial);
-router.get('/:id', materialController.getMaterialById);
-router.put('/:id/update', materialController.updateMaterial);
+router.post('/create', createMaterial);
+router.get('/:id', getMaterialById);
+router.put('/:id/update', updateMaterial);
 // TODO - GET all available materials in db
 
-module.exports = router;
+
+export default router;

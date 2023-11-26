@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const materialSchema = new mongoose.Schema({
     itemName: String,
@@ -7,11 +7,7 @@ const materialSchema = new mongoose.Schema({
         type: String,
         enum: ['Yes', 'No'],
     },
-    price: {
-        type: Number,
-        get: (v) => v.toFixed(2),
-        set: (v) => parseFloat(v.toFixed(2)),
-    },
+    price:  Number,
     location: String,
     quantity: {
         type: Number,
@@ -50,4 +46,4 @@ const materialSchema = new mongoose.Schema({
 
 const Material = mongoose.model('Material', materialSchema);
 
-module.exports = Material;
+export default Material;
