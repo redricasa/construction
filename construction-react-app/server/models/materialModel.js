@@ -40,12 +40,12 @@ const materialSchema = new mongoose.Schema({
         },
     },
     energyScore: Number,
-    address: {
-        street: String,
-        city: String,
-        state: String,
-        zipcode: String,
-    },
+    // address: {
+    street: String,
+    city: String,
+    state: String,
+    zipcode: Number,
+    // },
     
 },
 {

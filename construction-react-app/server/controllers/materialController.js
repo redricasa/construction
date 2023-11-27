@@ -7,9 +7,9 @@ import asyncHandler from "express-async-handler";
 const createMaterial = asyncHandler(async (req, res) => {
     try {
         // Extract data from the request body
-        const { itemName, bulk, type, purchaseDate, energyScore, price, quantity, purchaseOrderNo, address, condition} = req.body;
+        const { itemName, bulk, type, purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode, condition} = req.body;
 
-        const newMaterial = await Material.create({itemName, bulk, type, purchaseDate, energyScore, price, quantity, purchaseOrderNo, address, condition});
+        const newMaterial = await Material.create({itemName, bulk, type, purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode, condition});
         // Respond with the saved material
         res.status(201).json(newMaterial);
     } catch (error) {
@@ -31,7 +31,12 @@ const updateMaterial = asyncHandler(async (req, res) => {
         material.price = req.body.price || material.price;
         material.quantity = req.body.quantity || material.quantity;
         material.purchaseOrderNo = req.body.purchaseOrderNo || material.purchaseOrderNo;
-        material.address = req.body.address || material.address;
+
+        material.street = req.body.street || material.street;
+        material.city = req.body.city || material.city;
+        material.state = req.body.state || material.state;
+        material.zipcode = req.body.zipcode || material.zipcode;
+
         material.condition = req.body.condition || material.condition;
 
         const newMaterial = await material.save()
@@ -45,7 +50,10 @@ const updateMaterial = asyncHandler(async (req, res) => {
             price: newMaterial.price,
             quantity: newMaterial.quantity,
             purchaseOrderNo: newMaterial.purchaseOrderNo,
-            address: newMaterial.address,
+            street: newMaterial.street,
+            city: newMaterial.city,
+            state: newMaterial.state,
+            zipcode: newMaterial.zipcode,
             condition: newMaterial.condition
         })
     } else {
@@ -59,7 +67,6 @@ const updateMaterial = asyncHandler(async (req, res) => {
 const getMaterialById = asyncHandler(async (req, res) => {
     
     const material = await Material.findById(req.params.id);
-    console.log("get material ---> ", material);
 
     if(!material) {
         res.status(400);
@@ -67,7 +74,7 @@ const getMaterialById = asyncHandler(async (req, res) => {
     }
 
     res.status(200).json(material);
-    // res.status(200).json({ message: "READ a material" });
+
 });
 
 export { createMaterial, getMaterialById, updateMaterial };
