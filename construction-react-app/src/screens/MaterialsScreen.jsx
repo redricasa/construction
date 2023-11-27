@@ -24,12 +24,6 @@ const Materials = () => {
                     <option>No</option>
                 </select>
 
-                <label htmlFor="materialOrTool">Type</label>
-                <select className="form-control form-control-sm" id="type">
-                    <option>Material</option>
-                    <option>Tool</option>
-                </select>
-
                 {/* <label>Location</label>
                 <input className="form-control"></input> */}
 
@@ -37,6 +31,9 @@ const Materials = () => {
                 <input className="form-control" placeholder="YYYY-mm-dd"></input>
 
                 <label>Energy Score</label>
+                <input className="form-control"></input>
+
+                <label>Purchase Order #</label>
                 <input className="form-control"></input>
 
                 {/* <label>Person checking OUT</label>
@@ -53,6 +50,11 @@ const Materials = () => {
 
                 {/* <label>Item ID</label>
                 <input className="form-control"></input> */}
+                <label htmlFor="materialOrTool">Type</label>
+                <select className="form-control form-control-sm" id="type">
+                    <option>Material</option>
+                    <option>Tool</option>
+                </select>
 
                 <label>Price</label>
                 <div className="input-group mb-3">
@@ -69,9 +71,6 @@ const Materials = () => {
                 </select>
 
                 <label>Quantity</label>
-                <input className="form-control"></input>
-
-                <label>Purchase Order #</label>
                 <input className="form-control"></input>
 
                 {/* street address entry start*/}

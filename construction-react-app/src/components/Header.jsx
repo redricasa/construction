@@ -57,7 +57,7 @@ const Header = () => {
                     </LinkContainer> */}
                     <LinkContainer to='/materials'>
                         <Nav.Link >
-                            <button className="btn btn-outline-warning" type="button">
+                            <button className="btn btn-outline-light" type="button">
                                 Inventory
                             </button>
                         </Nav.Link>

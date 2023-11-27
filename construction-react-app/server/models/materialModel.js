@@ -2,13 +2,25 @@ import mongoose from 'mongoose';
 
 const materialSchema = new mongoose.Schema({
     itemName: String,
-    itemId: String,
     bulk: {
         type: String,
         enum: ['Yes', 'No'],
     },
-    price:  Number,
-    location: String,
+    price: {
+        type: Number,
+        validate: {
+        validator: Number.isInteger,
+        message: 'Price must be an integer.',
+        },
+    },
+    type:  {
+        type: String,
+        enum: ['Material', 'Tool'],
+    },
+    condition:  {
+        type: String,
+        enum: ['Used', 'New'],
+    },
     quantity: {
         type: Number,
         validate: {
@@ -34,11 +46,7 @@ const materialSchema = new mongoose.Schema({
         state: String,
         zipcode: String,
     },
-    personCheckOut: String,
-    dateCheckedOut: {
-        type: Date,
-        default: Date.now,
-    }
+    
 },
 {
     timestamps: true
