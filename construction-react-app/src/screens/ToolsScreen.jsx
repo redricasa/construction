@@ -27,12 +27,15 @@ const Tools = () => {
                 <input className="form-control"></input>
 
                 <label>Date checked OUT</label>
-                <input className="form-control" placeholder="YYYY-mm-dd"></input> */}
+                <input className="form-control" placeholder="YYYY-mm-dd"></input>
 
                 <label>Amount Checked OUT</label>
-                <input className="form-control"></input>
+                <input className="form-control"></input> */}
 
                 <label>Purchase Order #</label>
+                <input className="form-control"></input>
+
+                <label>Amount Purchased</label>
                 <input className="form-control"></input>
             </div>
 

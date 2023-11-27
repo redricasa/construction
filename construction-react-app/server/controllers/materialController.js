@@ -4,25 +4,21 @@ import asyncHandler from 'express-async-handler';
 
 
 // -----------  Controller function to add a new material
+// @desc    create material
+// @route   POST /api/material/create 
 const createMaterial = asyncHandler(async (req, res) => {
     try {
         // Extract data from the request body
         const {
             itemName,bulk,location,purchaseDate,energyScore,itemId,price,quantity,purchaseOrderNo,address,
         } = req.body;
-        // const materialExists = await Material.findOne({itemId});
-        // Create a new Material instance
-        const newMaterial = new Material({
+
+        const newMaterial = await Material.create({
             itemName,bulk,location,purchaseDate,energyScore,itemId,price,quantity,purchaseOrderNo,address,
         });
-
-        // Save the new material to the database
-        const savedMaterial = await newMaterial.save();
-
         // Respond with the saved material
-        res.status(201).json(savedMaterial);
+        res.status(201).json(newMaterial);
     } catch (error) {
-        // Handle errors
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }

@@ -7,8 +7,9 @@ const Materials = () => {
         <form>
             {/* bulk purchase selection */}
             <div className="container">
-            <h3>Materials Inventory</h3>
+            <h3>Item Inventory</h3>
             <p>Materials: things that will become a part of the house</p>
+            <p>Tools: used to build house and returned to inventory</p>
             {/* row for the 2 columns */}
             <div className="row">
                 {/* ---------- first column -------------- */}
@@ -18,13 +19,19 @@ const Materials = () => {
                 <input className="form-control"></input>
 
                 <label htmlFor="bulkpurchase">Bulk Purchase</label>
-                <select className="form-control" id="bulk">
+                <select className="form-control form-control-sm" id="bulk">
                     <option>Yes</option>
                     <option>No</option>
                 </select>
 
-                <label>Location</label>
-                <input className="form-control"></input>
+                <label htmlFor="materialOrTool">Type</label>
+                <select className="form-control form-control-sm" id="type">
+                    <option>Material</option>
+                    <option>Tool</option>
+                </select>
+
+                {/* <label>Location</label>
+                <input className="form-control"></input> */}
 
                 <label>Purchase Date</label>
                 <input className="form-control" placeholder="YYYY-mm-dd"></input>
@@ -44,11 +51,22 @@ const Materials = () => {
                 {/* ----------second column --------------- */}
             <div className="container col-sm">
 
-                <label>Item ID</label>
-                <input className="form-control"></input>
+                {/* <label>Item ID</label>
+                <input className="form-control"></input> */}
 
                 <label>Price</label>
-                <input className="form-control"></input>
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text">$</span>
+                    </div>
+                    <input type="text" className="form-control" aria-label="Amount (to the nearest dollar)"></input>
+                </div>
+
+                <label htmlFor="condition">Condition</label>
+                <select className="form-control form-control-sm" id="condition">
+                    <option>Used</option>
+                    <option>New</option>
+                </select>
 
                 <label>Quantity</label>
                 <input className="form-control"></input>
