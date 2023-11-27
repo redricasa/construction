@@ -24,8 +24,11 @@ app.use(cookieParser());
 // - GET /api/users/profile get user profile
 // - PUT /api/users/profile update profile
 app.use('/api/users', userRoutes);
+// - POST /api/material/create create a material/tool
+// -  GET /api/material/:id get a material/tool by id
+// - PUT /api/material/:id/update update a material/tool after getting it by id
 app.use('/api/material', materialRoutes);
-app.get('/', (req, res) => res.send('Server is ready'));
+app.get('/', (req, res) => res.send(`Server is ready on port ${port}`));
 
 app.use(notFound);
 app.use(errorHandler);
