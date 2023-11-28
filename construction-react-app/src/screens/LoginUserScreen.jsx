@@ -13,7 +13,7 @@ const LoginUser = () => {
     const [password, setPassword]= useState('');
 
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const [login, { isLoading}] = useLoginMutation();
 

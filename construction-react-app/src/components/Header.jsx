@@ -42,10 +42,17 @@ const Header = () => {
                                             Profile
                                         </NavDropdown.Item>
                                     </LinkContainer>
-                                    <NavDropdown.Item onClick={ logoutHandler }>
+                                    <NavDropdown.Item onClick={ logoutHandler } >
                                         Log out
                                     </NavDropdown.Item>
                                 </NavDropdown>
+                                <LinkContainer to='/materials'>
+                                    <Nav.Link >
+                                        <button className="btn btn-outline-light" type="button">
+                                            Inventory
+                                        </button>
+                                    </Nav.Link>
+                                </LinkContainer>
                             </>
                         ) : (
                             <>
@@ -66,13 +73,7 @@ const Header = () => {
                             </>
                         )}
                     
-                    <LinkContainer to='/materials'>
-                        <Nav.Link >
-                            <button className="btn btn-outline-light" type="button">
-                                Inventory
-                            </button>
-                        </Nav.Link>
-                    </LinkContainer>
+                    
                     
                     
                     </Nav>
