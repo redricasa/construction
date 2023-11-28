@@ -3,7 +3,7 @@ import asyncHandler from "express-async-handler";
 
 // -----------  Controller function to add a new material
 // @desc    create material
-// @route   POST /api/material/create
+// @route   POST http://localhost:8000/api/material/create
 const createMaterial = asyncHandler(async (req, res) => {
     try {
         // Extract data from the request body
@@ -20,6 +20,8 @@ const createMaterial = asyncHandler(async (req, res) => {
 });
 
 // ------------ Update material find by item ID ----------
+// PUT {{baseURL}}/65646191f6f578b0f306a6c4/update
+// @route http://localhost:8000/api/material/:id/update
 const updateMaterial = asyncHandler(async (req, res) => {
     const material = await Material.findById(req.params.id);
     if (material) {
@@ -64,6 +66,8 @@ const updateMaterial = asyncHandler(async (req, res) => {
 });
 
 // ------------ READ material find item by ID --------------
+// GET http://localhost:8000/api/material/:id
+// @route {{baseURL}}/65646191f6f578b0f306a6c4
 const getMaterialById = asyncHandler(async (req, res) => {
     
     const material = await Material.findById(req.params.id);
