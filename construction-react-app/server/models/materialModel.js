@@ -1,6 +1,13 @@
 import mongoose from 'mongoose';
 
+
+
 const materialSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+
     itemName: String,
     bulk: {
         type: String,
@@ -8,10 +15,7 @@ const materialSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        validate: {
-        validator: Number.isInteger,
-        message: 'Price must be an integer.',
-        },
+        required: [true, "price must be an integer"]
     },
     type:  {
         type: String,
@@ -23,10 +27,7 @@ const materialSchema = new mongoose.Schema({
     },
     quantity: {
         type: Number,
-        validate: {
-        validator: Number.isInteger,
-        message: 'Quantity must be an integer.',
-        },
+        required: [true, "amount purchased must be an integer"]
     },
     purchaseDate: {
         type: Date,
@@ -34,10 +35,7 @@ const materialSchema = new mongoose.Schema({
     },
     purchaseOrderNo:{
         type: Number,
-        validate: {
-        validator: Number.isInteger,
-        message: 'Purchase order number must be an integer.',
-        },
+        required: [true, "purchase Order Number must be an integer"]
     },
     energyScore: Number,
     // address: {
