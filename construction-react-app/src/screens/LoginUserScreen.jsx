@@ -4,7 +4,8 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 import {useDispatch, useSelector} from 'react-redux';
 import { useLoginMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
-import {toast} from 'react-toastify'
+import {toast} from 'react-toastify';
+
 
 
 const LoginUser = () => {

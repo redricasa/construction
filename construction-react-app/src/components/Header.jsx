@@ -18,11 +18,12 @@ const Header = () => {
         try {
             await logoutApiCall().unwrap;
             dispatch(logout());
-            navigate('/')
+            navigate('/');
         } catch (error) {
             console.log(error);
         }
     }
+
     return (
         <header>
         <nav className="navbar sticky-top navbar-light bg-danger">
