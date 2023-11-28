@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import { Link, useNavigate } from 'react-router-dom';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button} from 'react-bootstrap';
 import {useDispatch, useSelector} from 'react-redux';
 import { useLoginMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
@@ -15,7 +15,7 @@ const LoginUser = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const [login, { isLoading}] = useLoginMutation();
+    const [login] = useLoginMutation();
 
     const { userInfo } = useSelector((state) => state.auth)
 
