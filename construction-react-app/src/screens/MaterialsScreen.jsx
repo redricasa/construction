@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 
 
-
 const Materials = () => {
     const [itemName, setItemName] = useState('');
     const [price, setPrice] = useState(0.0);

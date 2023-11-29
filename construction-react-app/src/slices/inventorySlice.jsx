@@ -1,11 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import inventoryService from "../service/inventoryService";
+
 
 
 const initialState = {
     itemName: '',
     bulk: '',
     type: '',
-    purchaseDate: Date.now,
+    purchaseDate: null, //Date.now if error
     energyScore: 0,
     price: 0.0,
     quantity: 0,
@@ -16,6 +18,28 @@ const initialState = {
     zipcode: 0,
     condition: ''
 }
+
+// Create new inventory item
+// TODO: ---- UPDATE CODE FOR INVENTORY INSTEAD OF GOAL 
+export const createInventory = createAsyncThunk(
+    'inventory/create',
+    async (inventoryData, thunkAPI) => {
+        try {
+            const token = thunkAPI.getState().auth.user.token
+            return await inventoryService.createInventory(inventoryData, token)
+        } catch (error) {
+            const message =
+            (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+                error.message ||
+                error.toString()
+            return thunkAPI.rejectWithValue(message)
+        }
+    }
+)
+
+
 
 // TODO: ---CREATE INVENTORY THUNK
 export const inventorySlice = createSlice({
