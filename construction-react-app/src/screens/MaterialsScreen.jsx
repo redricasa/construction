@@ -1,6 +1,19 @@
 import React from "react";
+import { useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+
+
+
 
 const Materials = () => {
+    const [text, setText] = useState('');
+    const dispatch = useDispatch();
+    
+
+    const onSubmit = e => {
+        e.preventDefault();
+    }
+
     return (
         <>
             
@@ -16,7 +29,13 @@ const Materials = () => {
                 <div className="col-sm">
 
                 <label>Item Name</label>
-                <input className="form-control"></input>
+                <input 
+                    className="form-control"
+                    type='text'
+                    id='text'
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                ></input>
 
                 <label htmlFor="bulkpurchase">Bulk Purchase</label>
                 <select className="form-control form-control-sm" id="bulk">
@@ -24,32 +43,30 @@ const Materials = () => {
                     <option>No</option>
                 </select>
 
-                {/* <label>Location</label>
-                <input className="form-control"></input> */}
-
+            
                 <label>Purchase Date</label>
-                <input className="form-control" placeholder="YYYY-mm-dd"></input>
+                <input className="form-control"
+                    type='text'
+                    id='text'
+                    value={text}
+                    onChange={(e) => setText(e.target.value)} placeholder="YYYY-mm-dd"></input>
 
                 <label>Energy Score</label>
-                <input className="form-control"></input>
+                <input className="form-control"
+                    type='text'
+                    id='text'
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}></input>
 
                 <label>Purchase Order #</label>
                 <input className="form-control"></input>
-
-                {/* <label>Person checking OUT</label>
-                <input className="form-control"></input>
-
-                <label>Date checked OUT</label>
-                <input className="form-control" placeholder="YYYY-mm-dd"></input> */}
-
             </div>
 
                 
                 {/* ----------second column --------------- */}
             <div className="container col-sm">
 
-                {/* <label>Item ID</label>
-                <input className="form-control"></input> */}
+        
                 <label htmlFor="materialOrTool">Type</label>
                 <select className="form-control form-control-sm" id="type">
                     <option>Material</option>
@@ -83,44 +100,45 @@ const Materials = () => {
                     id="street"
                     name="street"
                     placeholder="street"
-                    // value={address.street}
-                    // onChange={handleChange}
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
                 />
                 
                 <div className="row">
                     
                     <div className="col-5" >
                         <input
-                        type="text"
+                        type='text'
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
                         className="form-control"
                         id="city"
                         name="city"
                         placeholder="city"
-                        // value={address.city}
-                        // onChange={handleChange}
+
                         />
                     </div>
                     <div className="col-3">
                         <input
-                        type="text"
+                        type='text'
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
                         className="form-control"
                         id="state"
                         name="state"
                         placeholder="state"
-                        // value={address.state}
-                        // onChange={handleChange}
                         />
                     </div>
 
                     <div className="col-3" >
                         <input
-                        type="text"
+                        type='text'
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
                         className="form-control"
                         id="zipcode"
                         name="zipcode"
                         placeholder="zip code"
-                        // value={address.zipcode}
-                        // onChange={handleChange}
                         />
                     </div>
                 </div>
