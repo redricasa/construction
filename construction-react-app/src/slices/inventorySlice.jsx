@@ -24,3 +24,6 @@ export const inventorySlice = createSlice({
         reset: (state) => initialState
     }
 })
+
+export const {reset} = inventorySlice.actions
+export default inventorySlice.reducer

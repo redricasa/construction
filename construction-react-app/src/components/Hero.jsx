@@ -1,14 +1,27 @@
-import { Navbar, Nav, Container } from 'react-bootstrap'
+import {  Nav, Container } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap';
+import { useSelector } from 'react-redux';
+import Materials from '../screens/MaterialsScreen';
+
+
 
 
 const Hero = () => {
+    const { userInfo } = useSelector((state) => state.auth);
     return (
-        <>
+        
         <div className="d-flex justify-content-center align-items-center min-vh-100">
+            { userInfo ? (
+                <>
+                    <Materials />
+                </>
+                ) : (
+                <>
             <h6>Login or Register</h6>
             <form className=" text-center p-5 border border-dark rounded bg-dark">
-            <Container></Container>
+            
+            <Container>
+            
                 <LinkContainer to='/login'>
                     <Nav.Link  >
                         <button className="btn btn-outline-warning me-2" type="button">
@@ -23,12 +36,12 @@ const Hero = () => {
                         </button>
                     </Nav.Link>
                 </LinkContainer>
-                    
-
+            </Container>        
+            
             </form>
+            </>
+            )}
         </div>
-
-        </>
 
     )
 }
