@@ -1,7 +1,7 @@
 
 import axios from "axios";
 
-const API_URL = '/api/material/'
+const API_URL = '/api/inventory/'
 
 // create an inventory item
 // {{baseURL}}/create
@@ -20,8 +20,18 @@ const createInventory = async (inventoryData, token) => {
     return res.data;
 }
 
-//TODO: --- getAllInventoryByUser ---- GET ALL INVENTORY DISPLAYED ON SCREEN
+//--- getAllInventoryByUser ---- GET ALL INVENTORY DISPLAYED ON SCREEN
+const getAllInventoryByUser = async (token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    }
+    
+    const response = await axios.get(API_URL, config)
 
+    return response.data
+}
 
 
 // get single inventory by id
@@ -52,7 +62,8 @@ const updateInventory = async (inventoryId, token) => {
 const inventoryService = {
     updateInventory,
     createInventory,
-    getInventory
+    getInventory,
+    getAllInventoryByUser
 }
 
 export default inventoryService;

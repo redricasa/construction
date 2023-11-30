@@ -20,7 +20,6 @@ const initialState = {
 }
 
 // Create new inventory item
-// TODO: ---- UPDATE CODE FOR INVENTORY INSTEAD OF GOAL 
 export const createInventory = createAsyncThunk(
     'inventory/create',
     async (inventoryData, thunkAPI) => {

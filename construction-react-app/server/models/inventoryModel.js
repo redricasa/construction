@@ -3,8 +3,9 @@ import mongoose from 'mongoose';
 
 
 const materialSchema = new mongoose.Schema({
-    userId: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
+        required: true,
         ref: 'User'
     },
 
@@ -38,12 +39,10 @@ const materialSchema = new mongoose.Schema({
         required: [true, "purchase Order Number must be an integer"]
     },
     energyScore: Number,
-    // address: {
     street: String,
     city: String,
     state: String,
     zipcode: Number,
-    // },
     
 },
 {

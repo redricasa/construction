@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 
 
-const Materials = () => {
+const Inventory = () => {
     const [itemName, setItemName] = useState('');
     const [price, setPrice] = useState(0.0);
     const [type, setType] = useState('');
@@ -25,6 +25,7 @@ const Materials = () => {
 
     const onSubmit = e => {
         e.preventDefault();
+        // TODO -------------------------------------
     }
 
     const handlePriceChange = (event) => {
@@ -202,4 +203,4 @@ const Materials = () => {
     );
 };
 
-export default Materials;
+export default Inventory;

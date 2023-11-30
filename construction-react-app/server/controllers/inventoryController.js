@@ -1,4 +1,4 @@
-import Material from "../models/materialModel.js";
+import Material from "../models/inventoryModel.js";
 import asyncHandler from "express-async-handler";
 
 // -----------  Controller function to add a new material

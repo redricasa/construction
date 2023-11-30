@@ -12,8 +12,7 @@ const protect = asyncHandler(async (req, res, next) => {
         try {
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
             // set req.user to user logged in once token is decoded
-            req.user = await User.findById(decoded.userId)
-            // .select('-password');// -password makes sure that the hashed password isn't returned
+            req.user = await User.findById(decoded.userId).select('-password');// -password makes sure that the hashed password isn't returned
             // req.material = await Material.findById(decoded.)
             next();
         } catch (error) {

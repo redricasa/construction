@@ -25,21 +25,6 @@ userSchema.methods.matchPassword = async function(enteredPass) {
     return await bcrypt.compare(enteredPass, this.password);
 }
 
-// userSchema.pre('save', async function (next) {
-//     if(!this.isModified, ('password')){
-//         next();
-//     }
-
-//     const salt = await bcrypt.genSalt(10);
-//     // bcrypt.hash(this.password, salt, hash); 
-//     hashed = await bcrypt.hash(this.password, salt); 
-//     // this.password = hash
-
-//     console.log(hashed)
-//     next();
-//     // console.log(this.password )
-// });
-
 userSchema.pre('save', function(next) {
 
     const user = this;
