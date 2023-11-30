@@ -1,6 +1,9 @@
 import React from "react";
+import { useEffect } from 'react'
 import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
+import {createInventory, reset} from '../slices/inventorySlice'
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -19,13 +22,42 @@ const Inventory = () => {
     const [state, setState] = useState('');
     const [zipcode, setZipcode] = useState(0);
 
-
-
+    const navigate = useNavigate()
     const dispatch = useDispatch();
+
+    const { user } = useSelector((state) => state.auth)
+    const { inventory, isLoading, isError, message } = useSelector(
+        (state) => state.inventory
+    );
+
+    useEffect(() => {
+        dispatch(getAllInventoryByUser())
+    
+        return () => {
+            dispatch(reset())
+        }
+    }, [user, navigate, isError, message, dispatch])
+
 
     const onSubmit = e => {
         e.preventDefault();
         // TODO -------------------------------------
+        dispatch(createInventory({
+            itemName, price, type, bulk, condition, purchaseDate, energyScore, quantity, purchaseOrderNo, street, city, state, zipcode
+        }))
+        setItemName('')
+        setPrice(0.0)
+        setType('')
+        setBulk('')
+        setCondition('')
+        setPurchaseDate(null)
+        setEnergyScore(0)
+        setQuantity(0)
+        setPurchaseOrderNo(0)
+        setCity('')
+        setState('')
+        setZipcode(0)
+        setStreet('')
     }
 
     const handlePriceChange = (event) => {

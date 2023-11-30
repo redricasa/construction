@@ -46,7 +46,7 @@ const Header = () => {
                                         Log out
                                     </NavDropdown.Item>
                                 </NavDropdown>
-                                <LinkContainer to='/materials'>
+                                <LinkContainer to='/inventory'>
                                     <Nav.Link >
                                         <button className="btn btn-outline-light" type="button">
                                             Inventory

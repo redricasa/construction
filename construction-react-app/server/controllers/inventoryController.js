@@ -1,10 +1,10 @@
 import Inventory from "../models/inventoryModel.js";
 import asyncHandler from "express-async-handler";
 
+
 // -----------  Controller function to add a new material
 // @desc    create material
-// @route   POST http://localhost:8000/api/material/create  createInventory
-
+// @route   POST http://localhost:8000/api/material/create  
 const createInventory = asyncHandler(async (req, res) => {
     try {
         // Extract data from the request body
@@ -89,7 +89,7 @@ const getAllInventoryByUser = asyncHandler(async (req, res) => {
     res.status(200).json(allInventory);
 })
 
-//  createInventory
+
 export { 
     createInventory, 
     getInventoryById, 

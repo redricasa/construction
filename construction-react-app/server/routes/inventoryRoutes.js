@@ -6,7 +6,7 @@ import {
     updateInventory, 
     getAllInventoryByUser} from '../controllers/inventoryController.js'; 
 
-    // createInventory createInventory
+
 router.post('/create', createInventory);
 router.get('/:id', getInventoryById);
 router.get('/get', getAllInventoryByUser);

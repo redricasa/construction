@@ -1,8 +1,7 @@
 import {  Nav, Container } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector } from 'react-redux';
-import Materials from '../screens/MaterialsScreen';
-
+import Inventory from '../screens/InventoryScreen';
 
 
 
@@ -13,7 +12,7 @@ const Hero = () => {
         <div className="d-flex justify-content-center align-items-center min-vh-100">
             { userInfo ? (
                 <>
-                    <Materials />
+                    <Inventory />
                 </>
                 ) : (
                 <>
