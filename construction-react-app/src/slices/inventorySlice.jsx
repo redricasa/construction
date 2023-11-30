@@ -61,7 +61,10 @@ export const getAllInventoryByUser = createAsyncThunk(
     }
 )
 // TODO: --- UPDATE inventory  updateInventory
-
+export const updateInventory = createAsyncThunk(
+    'inventory/update',
+    
+)
 
 // TODO: ---CREATE INVENTORY THUNK
 export const inventorySlice = createSlice({

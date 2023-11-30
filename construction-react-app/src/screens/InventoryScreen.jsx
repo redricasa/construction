@@ -231,6 +231,18 @@ const Inventory = () => {
 
             
         </form>
+        <section className='content'>
+        {inventory.length > 0 ? (
+            <div className='inventory'>
+                {inventory.map((item) => (
+                <InventoryItem key={item._id} item={item} />
+                ))}
+            </div>
+        ) : (
+            <h3>You have not entered any materials/tools 😗</h3>
+        )}
+        </section>
+
         </>
     );
 };
