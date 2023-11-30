@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import Inventory from "./screens/InventoryScreen";
+// import Inventory from "./screens/InventoryScreen";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Home from "./screens/HomePageScreen";
-import Register from "./screens/RegisterUserScreen";
-import LoginUser from "./screens/LoginUserScreen";
+// import Home from "./screens/HomePageScreen";
+// import Register from "./screens/RegisterUserScreen";
+// import LoginUser from "./screens/LoginUserScreen";
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 

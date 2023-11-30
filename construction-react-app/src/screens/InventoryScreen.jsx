@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect } from 'react'
 import { useState } from 'react';
-import { useSelector, useDispatch } from "react-redux";
-import {createInventory, reset} from '../slices/inventorySlice'
-import { useNavigate } from 'react-router-dom';
+// import { useSelector, useDispatch } from "react-redux";
+// import {createInventory, reset} from '../slices/inventorySlice'
+// import { useNavigate } from 'react-router-dom';
 
 
 
@@ -22,29 +22,32 @@ const Inventory = () => {
     const [state, setState] = useState('');
     const [zipcode, setZipcode] = useState(0);
 
-    const navigate = useNavigate()
-    const dispatch = useDispatch();
+    // const navigate = useNavigate()
+    // const dispatch = useDispatch();
 
-    const { user } = useSelector((state) => state.auth)
-    const { inventory, isLoading, isError, message } = useSelector(
-        (state) => state.inventory
-    );
+    // const { user } = useSelector((state) => state.auth)
+    // const { inventory, isLoading, isError, message } = useSelector(
+    //     (state) => state.inventory
+    // );
 
     useEffect(() => {
-        dispatch(getAllInventoryByUser())
+        // dispatch(getAllInventoryByUser())
     
-        return () => {
-            dispatch(reset())
-        }
-    }, [user, navigate, isError, message, dispatch])
+        // return () => {
+        //     dispatch(reset())
+        // }
+    }, 
+    [
+        // user, navigate, isError, message, dispatch
+    ])
 
 
     const onSubmit = e => {
         e.preventDefault();
         // TODO -------------------------------------
-        dispatch(createInventory({
-            itemName, price, type, bulk, condition, purchaseDate, energyScore, quantity, purchaseOrderNo, street, city, state, zipcode
-        }))
+        // dispatch(createInventory({
+        //     itemName, price, type, bulk, condition, purchaseDate, energyScore, quantity, purchaseOrderNo, street, city, state, zipcode
+        // }))
         setItemName('')
         setPrice(0.0)
         setType('')
@@ -232,15 +235,15 @@ const Inventory = () => {
             
         </form>
         <section className='content'>
-        {inventory.length > 0 ? (
-            <div className='inventory'>
-                {inventory.map((item) => (
-                <InventoryItem key={item._id} item={item} />
-                ))}
-            </div>
-        ) : (
-            <h3>You have not entered any materials/tools 😗</h3>
-        )}
+            {inventory.length > 0 ? (
+                <div className='inventory'>
+                    {inventory.map((item) => (
+                    <InventoryItem key={item._id} item={item} />
+                    ))}
+                </div>
+            ) : (
+                <h3>You have not entered any materials/tools 😗</h3>
+            )}
         </section>
 
         </>
