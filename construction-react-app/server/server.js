@@ -6,7 +6,7 @@ import {notFound, errorHandler} from './middleware/errorMiddleware.js';
 import connectDB from "./config/db.js";
 const port = process.env.PORT || 5000;
 import userRoutes from './routes/userRoutes.js';
-import materialRoutes from './routes/materialRoutes.js'
+import inventoryRoutes from './routes/inventoryRoutes.js'
 
 
 
@@ -24,10 +24,10 @@ app.use(cookieParser());
 // - GET /api/users/profile get user profile
 // - PUT /api/users/profile update profile
 app.use('/api/users', userRoutes);
-// - POST /api/material/create create a material/tool
-// -  GET /api/material/:id get a material/tool by id
-// - PUT /api/material/:id/update update a material/tool after getting it by id
-app.use('/api/material', materialRoutes);
+// - POST /api/inventory/create create a material/tool
+// -  GET /api/inventory/:id get a material/tool by id
+// - PUT /api/inventory/:id/update update a material/tool after getting it by id
+app.use('/api/inventory', inventoryRoutes);
 app.get('/', (req, res) => res.send(`Server is ready on port ${port}`));
 
 app.use(notFound);

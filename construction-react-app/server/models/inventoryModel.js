@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 
 
-const materialSchema = new mongoose.Schema({
+const inventorySchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
@@ -49,6 +49,6 @@ const materialSchema = new mongoose.Schema({
     timestamps: true
 });
 
-const Material = mongoose.model('Material', materialSchema);
+const Inventory = mongoose.model('Inventory', inventorySchema);
 
-export default Material;
+export default Inventory;

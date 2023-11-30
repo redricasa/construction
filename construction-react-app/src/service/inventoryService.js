@@ -28,7 +28,7 @@ const getAllInventoryByUser = async (token) => {
         },
     }
     
-    const response = await axios.get(API_URL, config)
+    const response = await axios.get(API_URL+ 'get', config)
 
     return response.data
 }

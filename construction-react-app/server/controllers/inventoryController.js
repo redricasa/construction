@@ -1,15 +1,16 @@
-import Material from "../models/inventoryModel.js";
+import Inventory from "../models/inventoryModel.js";
 import asyncHandler from "express-async-handler";
 
 // -----------  Controller function to add a new material
 // @desc    create material
-// @route   POST http://localhost:8000/api/material/create
-const createMaterial = asyncHandler(async (req, res) => {
+// @route   POST http://localhost:8000/api/material/create  createInventory
+
+const createInventory = asyncHandler(async (req, res) => {
     try {
         // Extract data from the request body
         const { itemName, bulk, type, purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode, condition} = req.body;
 
-        const newMaterial = await Material.create({itemName, bulk, type, purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode, condition});
+        const newMaterial = await Inventory.create({itemName, bulk, type, purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode, condition});
         // Respond with the saved material
         res.status(201).json(newMaterial);
     } catch (error) {
@@ -22,8 +23,8 @@ const createMaterial = asyncHandler(async (req, res) => {
 // ------------ Update material find by item ID ----------
 // PUT {{baseURL}}/65646191f6f578b0f306a6c4/update
 // @route http://localhost:8000/api/material/:id/update
-const updateMaterial = asyncHandler(async (req, res) => {
-    const material = await Material.findById(req.params.id);
+const updateInventory = asyncHandler(async (req, res) => {
+    const material = await Inventory.findById(req.params.id);
     if (material) {
         material.itemName = req.body.itemName || material.itemName;
         material.bulk = req.body.bulk || material.bulk;
@@ -68,9 +69,9 @@ const updateMaterial = asyncHandler(async (req, res) => {
 // ------------ READ material find item by ID --------------
 // GET http://localhost:8000/api/material/:id
 // @route {{baseURL}}/65646191f6f578b0f306a6c4
-const getMaterialById = asyncHandler(async (req, res) => {
+const getInventoryById = asyncHandler(async (req, res) => {
     
-    const material = await Material.findById(req.params.id);
+    const material = await Inventory.findById(req.params.id);
 
     if(!material) {
         res.status(400);
@@ -81,4 +82,17 @@ const getMaterialById = asyncHandler(async (req, res) => {
 
 });
 
-export { createMaterial, getMaterialById, updateMaterial };
+//  ------ getAllInventoryByUser
+const getAllInventoryByUser = asyncHandler(async (req, res) => {
+    const allInventory = await Inventory.find({ user: req.user.id});
+
+    res.status(200).json(allInventory);
+})
+
+//  createInventory
+export { 
+    createInventory, 
+    getInventoryById, 
+    updateInventory, 
+    getAllInventoryByUser 
+}
