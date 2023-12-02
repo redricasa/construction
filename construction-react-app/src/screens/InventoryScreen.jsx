@@ -22,38 +22,25 @@ const Inventory = () => {
     const [state, setState] = useState('');
     const [zipcode, setZipcode] = useState(0);
 
-    // const navigate = useNavigate()
-    // const dispatch = useDispatch();
 
-    // const { user } = useSelector((state) => state.auth)
-    // const { inventory, isLoading, isError, message } = useSelector(
-    //     (state) => state.inventory
-    // );
-
+    // TODO -----------------------------------------------------------------
     useEffect(() => {
-        // dispatch(getAllInventoryByUser())
-    
-        // return () => {
-        //     dispatch(reset())
-        // }
+
     }, 
     [
         // user, navigate, isError, message, dispatch
     ])
 
 
-    const onSubmit = e => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        // TODO -------------------------------------
-        // dispatch(createInventory({
-        //     itemName, price, type, bulk, condition, purchaseDate, energyScore, quantity, purchaseOrderNo, street, city, state, zipcode
-        // }))
+        
         setItemName('')
         setPrice(0.0)
         setType('')
         setBulk('')
         setCondition('')
-        setPurchaseDate(null)
+        setPurchaseDate('')
         setEnergyScore(0)
         setQuantity(0)
         setPurchaseOrderNo(0)
@@ -113,12 +100,13 @@ const Inventory = () => {
                 <input className="form-control"
                     type='text'
                     id='text'
-                    value={purchaseDate ? purchaseDate.toISOString().split('T')[0] : ''}
+                    // value={purchaseDate ? purchaseDate.toISOString().split('T')[0] : ''}
+                    value={null}
                     onChange={(e) => setPurchaseDate(new Date(e.target.value))}placeholder="YYYY-mm-dd"></input>
 
                 <label>Energy Score</label>
                 <input className="form-control"
-                    type='text'
+                    type='number'
                     id='text'
                     value={energyScore}
                     onChange={(e) => setEnergyScore(e.target.value)}></input>
@@ -235,7 +223,7 @@ const Inventory = () => {
             
         </form>
         <section className='content'>
-            {inventory.length > 0 ? (
+            {/* {inventory.length > 0 ? (
                 <div className='inventory'>
                     {inventory.map((item) => (
                     <InventoryItem key={item._id} item={item} />
@@ -243,7 +231,7 @@ const Inventory = () => {
                 </div>
             ) : (
                 <h3>You have not entered any materials/tools 😗</h3>
-            )}
+            )} */}
         </section>
 
         </>

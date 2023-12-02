@@ -6,7 +6,7 @@ import { Envelope, Github, Linkedin, Briefcase } from 'react-bootstrap-icons';
 const Footer = () => {
     return (
         <>
-        <nav className="navbar  navbar-light bg-light">
+        <nav className="navbar  navbar-dark bg-info">
         
         <button className="btn btn-outline-warning me-2" type="button">
             <a href='https://github.com/redricasa' target="_blank" >

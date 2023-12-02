@@ -9,8 +9,8 @@ import {
 
 router.post('/create', createInventory);
 router.get('/:id', getInventoryById);
-router.get('/get', getAllInventoryByUser);
 router.put('/:id/update', updateInventory);
+router.get('/get', getAllInventoryByUser);
 
 
 
