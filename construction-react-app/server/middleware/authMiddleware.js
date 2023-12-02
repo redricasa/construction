@@ -13,16 +13,17 @@ const protect = asyncHandler(async (req, res, next) => {
         try {
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
             // set req.user to user logged in once token is decoded
-            req.user = await User.findById(decoded.userId).select('-password');// -password makes sure that the hashed password isn't returned
-            
+            req.user = await User.findById(decoded.userId)
+            .select('-password');// -password makes sure that the hashed password isn't returned
+            console.log('User: User.findById(decoded.userId) --->>', req.user);
             next();
         } catch (error) {
-            res.status(401)
-            throw new Error('Not authorized, token exists but is invalid')
+            res.status(401).json({ error: 'Not authorized, token exists but is invalid' });
+            // throw new Error('Not authorized, token exists but is invalid')
         }
     } else {
-        res.status(401)
-        throw new Error('Not authorized - no token')
+        res.status(401).json({ error: 'Not authorized - no token' });
+        // throw new Error('Not authorized - no token')
     }
 });
 

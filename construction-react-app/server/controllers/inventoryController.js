@@ -6,11 +6,13 @@ import asyncHandler from "express-async-handler";
 // @desc    create material
 // @route   POST http://localhost:8000/api/material/create  
 const createInventory = asyncHandler(async (req, res) => {
+    console.log('User: ---->>', req.user);
     try {
+        const userId = req.user.id;
         // Extract data from the request body
         const { itemName, bulk, type, purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode, condition} = req.body;
 
-        const newMaterial = await Inventory.create({itemName, bulk, type, purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode, condition});
+        const newMaterial = await Inventory.create({ user: userId, itemName, bulk, type, purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode, condition});
         // Respond with the saved material
         res.status(201).json(newMaterial);
     } catch (error) {
