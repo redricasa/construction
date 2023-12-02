@@ -18,7 +18,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
-app.use(protect); // TODO ---------- 'Inventory validation failed'
 // - POST /api/users register a user
 // - POST /api/users/auth authenticare a user and get token
 // - POST /api/users/logout logout and clear cookie
@@ -29,6 +28,7 @@ app.use('/api/users', userRoutes);
 // - GET /api/inventory/:id get a material/tool by id
 // - PUT /api/inventory/:id/update update a material/tool after getting it by id
 // -  GET /api/inventory/get  get all inventory entered by logged in user
+app.use(protect); 
 app.use('/api/inventory', inventoryRoutes);
 app.get('/', (req, res) => res.send(`Server is ready on port ${port}`));
 

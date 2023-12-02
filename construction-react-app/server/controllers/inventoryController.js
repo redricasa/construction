@@ -6,7 +6,7 @@ import asyncHandler from "express-async-handler";
 // @desc    create material
 // @route   POST http://localhost:8000/api/material/create  
 const createInventory = asyncHandler(async (req, res) => {
-    console.log('User: ---->>', req.user);
+    // console.log('User: ---->>', req.user);
     try {
         const userId = req.user.id;
         // Extract data from the request body
