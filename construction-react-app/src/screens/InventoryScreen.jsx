@@ -77,16 +77,16 @@ const Inventory = () => {
                 
                 <div className="col-sm">
 
-                <label>Item Name</label>
+                <label htmlFor="itemName">Item Name</label>
                 <input 
                     className="form-control"
                     type='text'
-                    id='text'
+                    id='itemName'
                     value={itemName}
                     onChange={(e) => setItemName(e.target.value)}
                 ></input>
 
-                <label htmlFor="bulkpurchase">Bulk Purchase</label>
+                <label htmlFor="bulk">Bulk Purchase</label>
                 <select className="form-control form-control-sm" 
                     id="bulk"
                     value={bulk} 
@@ -96,25 +96,26 @@ const Inventory = () => {
                 </select>
 
             
-                <label>Purchase Date</label>
+                <label htmlFor="purchase">Purchase Date</label>
                 <input className="form-control"
                     type='text'
-                    id='text'
+                    id='purchase'
                     // value={purchaseDate ? purchaseDate.toISOString().split('T')[0] : ''}
-                    value={null}
+                    value={''}
                     onChange={(e) => setPurchaseDate(new Date(e.target.value))}placeholder="YYYY-mm-dd"></input>
 
-                <label>Energy Score</label>
+                <label htmlFor="energyScore">Energy Score</label>
                 <input className="form-control"
                     type='number'
-                    id='text'
+                    id='energyScore'
                     value={energyScore}
                     onChange={(e) => setEnergyScore(e.target.value)}></input>
 
-                <label>Purchase Order #</label>
+                <label htmlFor="purchaseorderno">Purchase Order #</label>
                 <input className="form-control"
                     type="number"
                     value={purchaseOrderNo} 
+                    id='purchaseorderno'
                     onChange={(e) => setPurchaseOrderNo(e.target.value)}></input>
             </div>
 
@@ -123,7 +124,7 @@ const Inventory = () => {
             <div className="container col-sm">
 
         
-                <label htmlFor="materialOrTool">Type</label>
+                <label htmlFor="type">Type</label>
                 <select className="form-control form-control-sm" 
                     id="type"
                     value={type} 
@@ -132,7 +133,7 @@ const Inventory = () => {
                     <option>Tool</option>
                 </select>
 
-                <label>Price</label>
+                <label htmlFor="price">Price</label>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
                         <span className="input-group-text">$</span>
@@ -140,6 +141,7 @@ const Inventory = () => {
                     <input type="number" 
                         className="form-control" 
                         aria-label="Amount (to the nearest dollar)"
+                        id='price'
                         // step="0.01" 
                         value={price} 
                         onChange={handlePriceChange}></input>
@@ -154,16 +156,17 @@ const Inventory = () => {
                     <option>New</option>
                 </select>
 
-                <label>Quantity</label>
+                <label htmlFor="quantity">Quantity</label>
                 <input className="form-control"
                     type="number"
                     value={quantity} 
+                    id='quantity'
                     onChange={(e) => setQuantity(e.target.value)}></input>
 
             
-                <label htmlFor="address" className="form-label">
+                <label  className="form-label">
                     Address
-                </label>
+                
                 <input
                     type="text"
                     className="form-control"
@@ -212,7 +215,7 @@ const Inventory = () => {
                         />
                     </div>
                 </div>
-                
+                </label>
                 </div>
             </div>
             <button type="submit" className="btn btn-info">

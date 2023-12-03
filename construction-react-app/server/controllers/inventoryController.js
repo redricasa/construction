@@ -87,7 +87,7 @@ const getInventoryById = asyncHandler(async (req, res) => {
 //  ------ getAllInventoryByUser
 // GET http://localhost:8000/api/inventory/get
 const getAllInventoryByUser = asyncHandler(async (req, res) => {
-    console.log('User: ---->>', req.user);
+    // console.log('User: ---->>', req.user);
     try {
         
         const allInventory = await Inventory.find({ user: req.user.id});
