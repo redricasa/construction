@@ -16,7 +16,7 @@ const inventorySchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        required: [true, "price must be an integer"]
+        // required: [true, "price must be an integer"]
     },
     type:  {
         type: String,
@@ -28,7 +28,7 @@ const inventorySchema = new mongoose.Schema({
     },
     quantity: {
         type: Number,
-        required: [true, "amount purchased must be an integer"]
+        // required: [true, "amount purchased must be an integer"]
     },
     purchaseDate: {
         type: Date,
@@ -36,7 +36,7 @@ const inventorySchema = new mongoose.Schema({
     },
     purchaseOrderNo:{
         type: Number,
-        required: [true, "purchase Order Number must be an integer"]
+        // required: [true, "purchase Order Number must be an integer"]
     },
     energyScore: Number,
     street: String,

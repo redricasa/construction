@@ -8,9 +8,9 @@ import {
 const router = express.Router();
 
 router.post('/create', createInventory);
+router.get('/get', getAllInventoryByUser);
 router.get('/:id', getInventoryById);
 router.put('/:id/update', updateInventory);
-router.get('/get', getAllInventoryByUser);
 
 
 export default router;

@@ -4,7 +4,7 @@ import asyncHandler from "express-async-handler";
 
 // -----------  Controller function to add a new material
 // @desc    create material
-// @route   POST http://localhost:8000/api/material/create  
+// @route   POST http://localhost:8000/api/inventory/create  
 const createInventory = asyncHandler(async (req, res) => {
     // console.log('User: ---->>', req.user);
     try {
@@ -24,7 +24,7 @@ const createInventory = asyncHandler(async (req, res) => {
 
 // ------------ Update material find by item ID ----------
 // PUT {{baseURL}}/65646191f6f578b0f306a6c4/update
-// @route http://localhost:8000/api/material/:id/update
+// @route http://localhost:8000/api/inventory/:id/update
 const updateInventory = asyncHandler(async (req, res) => {
     const material = await Inventory.findById(req.params.id);
     if (material) {
@@ -69,7 +69,7 @@ const updateInventory = asyncHandler(async (req, res) => {
 });
 
 // ------------ READ material find item by ID --------------
-// GET http://localhost:8000/api/material/:id
+// GET http://localhost:8000/api/inventory/:id
 // @route {{baseURL}}/65646191f6f578b0f306a6c4
 const getInventoryById = asyncHandler(async (req, res) => {
     
@@ -85,10 +85,18 @@ const getInventoryById = asyncHandler(async (req, res) => {
 });
 
 //  ------ getAllInventoryByUser
+// GET http://localhost:8000/api/inventory/get
 const getAllInventoryByUser = asyncHandler(async (req, res) => {
-    const allInventory = await Inventory.find({ user: req.user.id});
-
-    res.status(200).json(allInventory);
+    console.log('User: ---->>', req.user);
+    try {
+        
+        const allInventory = await Inventory.find({ user: req.user.id});
+    
+        res.status(200).json(allInventory);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error - /get" });
+    }
 })
 
 
