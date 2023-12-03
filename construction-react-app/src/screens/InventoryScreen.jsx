@@ -1,10 +1,10 @@
 import React from "react";
 import { useEffect } from 'react'
 import { useState } from 'react';
-// import { useSelector, useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 // import {createInventory, reset} from '../slices/inventorySlice'
 // import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 
 
 const Inventory = () => {
@@ -22,8 +22,8 @@ const Inventory = () => {
     const [state, setState] = useState('');
     const [zipcode, setZipcode] = useState(0);
 
-
-    // TODO -----------------------------------------------------------------
+    const dispatch = useDispatch()
+    // TODO -----display all user entered inventory to select for updating--------------------------------------
     useEffect(() => {
 
     }, 
@@ -35,6 +35,14 @@ const Inventory = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         
+        console.log('Submitting form:', itemName, price, type, bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition); // Log form data
+        try {
+            await dispatch(createInventory({ itemName, price, type, bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition }));
+            console.log('Dispatch successful');
+        } catch (error) {
+            console.error('Error dispatching:', error);
+        }
+
         setItemName('')
         setPrice(0.0)
         setType('')
@@ -51,7 +59,6 @@ const Inventory = () => {
     }
 
     const handlePriceChange = (event) => {
-        // Ensure that the entered value is a valid number with up to two decimal places
         const inputValue = parseFloat(event.target.value);
         if (!isNaN(inputValue)) {
             setPrice(inputValue);
@@ -61,6 +68,14 @@ const Inventory = () => {
     const handleEnumChange = (setState, value) => {
         setState(value);
     };
+
+    const formatDate = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+    
 
 
     return (
@@ -95,14 +110,16 @@ const Inventory = () => {
                     <option>No</option>
                 </select>
 
-            
                 <label htmlFor="purchase">Purchase Date</label>
-                <input className="form-control"
-                    type='text'
-                    id='purchase'
-                    // value={purchaseDate ? purchaseDate.toISOString().split('T')[0] : ''}
-                    value={''}
-                    onChange={(e) => setPurchaseDate(new Date(e.target.value))}placeholder="YYYY-mm-dd"></input>
+                <input
+                    className="form-control"
+                    type="date"
+                    id="purchase"
+                    value={purchaseDate ? formatDate(purchaseDate) : ''}
+                    onChange={(e) => setPurchaseDate(new Date(e.target.value))}
+                    placeholder="YYYY-mm-dd"
+                />
+
 
                 <label htmlFor="energyScore">Energy Score</label>
                 <input className="form-control"
