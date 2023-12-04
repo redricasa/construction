@@ -10,9 +10,9 @@ const createInventory = asyncHandler(async (req, res) => {
     try {
         const userId = req.user.id;
         // Extract data from the request body
-        const { itemName, bulk, type, purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode, condition} = req.body;
+        const { bulk, type, condition, itemName,  purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode} = req.body;
 
-        const newMaterial = await Inventory.create({ user: userId, itemName, bulk, type, purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode, condition});
+        const newMaterial = await Inventory.create({ user: userId, bulk, type, condition, itemName,  purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode});
         // Respond with the saved material
         res.status(201).json(newMaterial);
     } catch (error) {

@@ -44,6 +44,10 @@ const Inventory = () => {
                 itemName,price,type,bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition
             });
 
+            // await axios.post('/api/inventory/create', {
+            //     itemName,price, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city
+            // });
+
             console.log('Dispatch successful! 😗');
         } catch (error) {
             console.error('Error dispatching: 😑', error);
@@ -51,9 +55,9 @@ const Inventory = () => {
 
         setItemName('')
         setPrice(0.0)
-        setType('')
-        setBulk('')
-        setCondition('')
+        // setType('')
+        // setBulk('')
+        // setCondition('')
         setPurchaseDate('')
         setEnergyScore(0)
         setQuantity(0)
@@ -174,7 +178,7 @@ const Inventory = () => {
                 <select className="form-control form-control-sm" 
                     id="condition"
                     value={condition} 
-                    onChange={(e) => handleEnumChange(setCondition, e.target.value)}>
+                    onChange={(e) => setCondition( e.target.value)}>
                     <option>Used</option>
                     <option>New</option>
                 </select>
