@@ -1,11 +1,7 @@
 import React from "react";
-import { useEffect } from 'react'
-import { useState } from 'react';
-// import { useDispatch } from "react-redux";
-// import {createInventory, reset} from '../slices/inventorySlice'
-// import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react'
 import axios from 'axios';
-
+import { fetchUserInventory } from '../utils/api'
 
 
 const Inventory = () => {
@@ -14,7 +10,7 @@ const Inventory = () => {
     const [type, setType] = useState('');
     const [bulk, setBulk] = useState('');
     const [condition, setCondition] = useState('');
-    const [purchaseDate, setPurchaseDate] = useState(null);
+    const [purchaseDate, setPurchaseDate] = useState(null);//TODO test new Date
     const [energyScore, setEnergyScore] = useState(0);
     const [quantity, setQuantity] = useState(0);
     const [purchaseOrderNo, setPurchaseOrderNo] = useState(0);
@@ -23,25 +19,29 @@ const Inventory = () => {
     const [state, setState] = useState('');
     const [zipcode, setZipcode] = useState(0);
 
-    // const dispatch = useDispatch()
-    // TODO -----display all user entered inventory to select for updating--------------------------------------
-    useEffect(() => {
+    const [inventoryItems, setInventoryItems] = useState([]);
 
-    }, 
-    [
-        // user, navigate, isError, message, dispatch
-    ])
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await fetchUserInventory();
+                setInventoryItems(data);
+            } catch (error) {
+                console.log("Error with useEffect's fetchData ", error);
+            }
+        };
+        
+        fetchData();
+    }, [])
 
 
     const onSubmit = async (e) => {
         e.preventDefault();
         
         try {
-            
             await axios.post('/api/inventory/create', {
                 itemName,price,type,bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition
             });
-
             console.log('Dispatch successful! 😗');
         } catch (error) {
             console.error('Error dispatching: 😑', error);
@@ -83,7 +83,7 @@ const Inventory = () => {
             <h3>Item Inventory</h3>
             <p>Materials: things that will become a part of the house</p>
             <p>Tools: used to build house and returned to inventory</p>
-            <p>* make sure to select a Bulk Purchase, Type and Condition</p>
+            <p> * make sure to select a Bulk Purchase, Type and Condition</p>
             <div className="row">
                 
                 <div className="col-sm">
