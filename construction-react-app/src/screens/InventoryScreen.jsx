@@ -38,7 +38,7 @@ const Inventory = () => {
         console.log('Submitting form:', itemName, price, type, bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition); // Log form data
         try {
             // await dispatch(createInventory({ itemName, price, type, bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition }));
-            await axios.post('/create', {
+            await axios.post('/api/inventory/create', {
                 itemName,price,type,bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition
             });
             console.log('Dispatch successful! 😗');
