@@ -44,10 +44,6 @@ const Inventory = () => {
                 itemName,price,type,bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition
             });
 
-            // await axios.post('/api/inventory/create', {
-            //     itemName,price, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city
-            // });
-
             console.log('Dispatch successful! 😗');
         } catch (error) {
             console.error('Error dispatching: 😑', error);
@@ -55,9 +51,6 @@ const Inventory = () => {
 
         setItemName('')
         setPrice(0.0)
-        // setType('')
-        // setBulk('')
-        // setCondition('')
         setPurchaseDate('')
         setEnergyScore(0)
         setQuantity(0)
@@ -75,17 +68,12 @@ const Inventory = () => {
         }
     };
 
-    const handleEnumChange = (setState, value) => {
-        setState(value);
-    };
-
     const formatDate = (date) => {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
         return `${year}-${month}-${day}`;
     };
-    
 
 
     return (
@@ -116,6 +104,7 @@ const Inventory = () => {
                     id="bulk"
                     value={bulk} 
                     onChange={(e) => handleEnumChange(setBulk, e.target.value)}>
+                    <option selected>Is it a bulk purchase?</option>
                     <option>Yes</option>
                     <option>No</option>
                 </select>
@@ -156,6 +145,7 @@ const Inventory = () => {
                     id="type"
                     value={type} 
                     onChange={(e) => handleEnumChange(setType, e.target.value)}>
+                    <option selected>Choose inventory type</option>
                     <option>Material</option>
                     <option>Tool</option>
                 </select>
@@ -179,6 +169,7 @@ const Inventory = () => {
                     id="condition"
                     value={condition} 
                     onChange={(e) => setCondition( e.target.value)}>
+                    <option selected>Choose inventory condition</option>
                     <option>Used</option>
                     <option>New</option>
                 </select>
