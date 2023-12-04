@@ -5,9 +5,7 @@ import { useState } from 'react';
 // import {createInventory, reset} from '../slices/inventorySlice'
 // import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// import express from 'express';
-// import { createInventory} from '../controllers/inventoryController.js'; 
-// import router from "../../server/routes/inventoryRoutes";
+
 
 
 const Inventory = () => {
@@ -85,7 +83,7 @@ const Inventory = () => {
             <h3>Item Inventory</h3>
             <p>Materials: things that will become a part of the house</p>
             <p>Tools: used to build house and returned to inventory</p>
-        
+            <p>* make sure to select a Bulk Purchase, Type and Condition</p>
             <div className="row">
                 
                 <div className="col-sm">
@@ -99,11 +97,11 @@ const Inventory = () => {
                     onChange={(e) => setItemName(e.target.value)}
                 ></input>
 
-                <label htmlFor="bulk">Bulk Purchase</label>
+                <label htmlFor="bulk">* Bulk Purchase</label>
                 <select className="form-control form-control-sm" 
                     id="bulk"
                     value={bulk} 
-                    onChange={(e) => handleEnumChange(setBulk, e.target.value)}>
+                    onChange={(e) => setBulk( e.target.value)}>
                     <option selected>Is it a bulk purchase?</option>
                     <option>Yes</option>
                     <option>No</option>
@@ -140,11 +138,11 @@ const Inventory = () => {
             <div className="container col-sm">
 
         
-                <label htmlFor="type">Type</label>
+                <label htmlFor="type">* Type</label>
                 <select className="form-control form-control-sm" 
                     id="type"
                     value={type} 
-                    onChange={(e) => handleEnumChange(setType, e.target.value)}>
+                    onChange={(e) => setType( e.target.value)}>
                     <option selected>Choose inventory type</option>
                     <option>Material</option>
                     <option>Tool</option>
@@ -164,7 +162,7 @@ const Inventory = () => {
                         onChange={handlePriceChange}></input>
                 </div>
 
-                <label htmlFor="condition">Condition</label>
+                <label htmlFor="condition">* Condition</label>
                 <select className="form-control form-control-sm" 
                     id="condition"
                     value={condition} 
