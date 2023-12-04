@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from 'react'
 import axios from 'axios';
-import { fetchUserInventory } from '../utils/api'
+import { fetchUserInventory, updateEntry } from '../utils/api'
 
 
 const Inventory = () => {
@@ -251,7 +251,7 @@ const Inventory = () => {
                             <p className="card-text">Price: ${item.price} </p>
                         
                         </div>
-                        <button type="submit" className="btn btn-warning">Update</button>
+                        <button type="submit" className="btn btn-warning" onClick={updateEntry}>Update</button>
                         <button type="submit" className="btn btn-danger">Delete</button>
                     </div>))
                 }

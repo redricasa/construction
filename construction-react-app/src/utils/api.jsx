@@ -12,10 +12,19 @@ const fetchUserInventory = async () => {
     }
 };
 
+const updateEntry = async (id, data ) => {
+    try {
+        const response = await axios.put(`/api/inventory/${id}/update`);
+        return response.data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+};
 
 
 export {
     fetchUserInventory,
-
+    updateEntry
     
 };
