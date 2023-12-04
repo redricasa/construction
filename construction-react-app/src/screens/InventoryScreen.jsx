@@ -5,6 +5,9 @@ import { useState } from 'react';
 // import {createInventory, reset} from '../slices/inventorySlice'
 // import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+// import express from 'express';
+// import { createInventory} from '../controllers/inventoryController.js'; 
+// import router from "../../server/routes/inventoryRoutes";
 
 
 const Inventory = () => {
@@ -35,12 +38,12 @@ const Inventory = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         
-        console.log('Submitting form:', itemName, price, type, bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition); // Log form data
         try {
-            // await dispatch(createInventory({ itemName, price, type, bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition }));
+            
             await axios.post('/api/inventory/create', {
                 itemName,price,type,bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition
             });
+
             console.log('Dispatch successful! 😗');
         } catch (error) {
             console.error('Error dispatching: 😑', error);
