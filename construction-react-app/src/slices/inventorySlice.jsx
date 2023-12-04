@@ -24,12 +24,12 @@ const initialState = {
 }
 
 // Create new inventory item
-export const createInventory = createAsyncThunk(
-    'inventory/create',
+export const createInv = createAsyncThunk(
+    'inv/create',
     async (inventoryData, thunkAPI) => {
         try {
             const token = thunkAPI.getState().auth.user.token
-            return await inventoryService.createInventory(inventoryData, token)
+            return await inventoryService.createInv(inventoryData, token)
         } catch (error) {
             const message =
             (error.response &&
@@ -43,12 +43,12 @@ export const createInventory = createAsyncThunk(
 )
 
 // Get all user inventory
-export const getAllInventoryByUser = createAsyncThunk(
-    'inventory/get',
+export const getAllInvByUser = createAsyncThunk(
+    'inv/get',
     async (_, thunkAPI) => {
         try {
             const token = thunkAPI.getState().auth.user.token
-            return await inventoryService.getAllInventoryByUser(token)
+            return await inventoryService.getAllInvByUser(token)
         } catch (error) {
             const message =
             (error.response &&
@@ -61,8 +61,8 @@ export const getAllInventoryByUser = createAsyncThunk(
     }
 )
 // TODO: --- UPDATE inventory  updateInventory
-export const updateInventory = createAsyncThunk(
-    'inventory/update',
+export const updateInv = createAsyncThunk(
+    'inv/update',
     
 )
 
@@ -76,28 +76,28 @@ export const inventorySlice = createSlice({
     // TODO: EXTRA REDUCERS
     extraReducers: (builder) => { 
         builder
-            .addCase(createInventory.pending, (state) => {
+            .addCase(createInv.pending, (state) => {
                 state.isLoading = true
             })
-            .addCase(createInventory.fulfilled, (state, action) => {
+            .addCase(createInv.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
                 state.goals.push(action.payload)
             })
-            .addCase(createInventory.rejected, (state, action) => {
+            .addCase(createInv.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
             })
-            .addCase(getAllInventoryByUser.pending, (state) => {
+            .addCase(getAllInvByUser.pending, (state) => {
                 state.isLoading = true
             })
-            .addCase(getAllInventoryByUser.fulfilled, (state, action) => {
+            .addCase(getAllInvByUser.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
                 state.goals = action.payload
             })
-            .addCase(getAllInventoryByUser.rejected, (state, action) => {
+            .addCase(getAllInvByUser.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
@@ -115,15 +115,15 @@ export const inventorySlice = createSlice({
                 state.isError = true
                 state.message = action.payload
             })
-            .addCase(updateInventory.pending, (state) => {
+            .addCase(updateInv.pending, (state) => {
                 state.isLoading = true
             })
-            .addCase(updateInventory.fulfilled, (state, action) => {
+            .addCase(updateInv.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
                 state.goals = action.payload
             })
-            .addCase(updateInventory.rejected, (state, action) => {
+            .addCase(updateInv.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

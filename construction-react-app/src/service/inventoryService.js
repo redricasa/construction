@@ -5,7 +5,7 @@ const API_URL = '/api/inventory/'
 
 // create an inventory item
 // {{baseURL}}/create
-const createInventory = async (inventoryData, token) => {
+const createInv = async (inventoryData, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`,//associates userId with inventory entry
@@ -21,7 +21,7 @@ const createInventory = async (inventoryData, token) => {
 }
 
 //--- getAllInventoryByUser ---- GET ALL INVENTORY DISPLAYED ON SCREEN
-const getAllInventoryByUser = async (token) => {
+const getAllInvByUser = async (token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -49,7 +49,7 @@ const getInventory = async (inventoryId, token) => {
 
 // update inventory
 // {{baseURL}}/65646191f6f578b0f306a6c4/update
-const updateInventory = async (inventoryId, token) => {
+const updateInv = async (inventoryId, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -60,10 +60,10 @@ const updateInventory = async (inventoryId, token) => {
 
 
 const inventoryService = {
-    updateInventory,
-    createInventory,
+    updateInv,
+    createInv,
     getInventory,
-    getAllInventoryByUser
+    getAllInvByUser
 }
 
 export default inventoryService;

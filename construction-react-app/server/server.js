@@ -23,13 +23,18 @@ app.use(cookieParser());
 // - POST /api/users/logout logout and clear cookie
 // - GET /api/users/profile get user profile
 // - PUT /api/users/profile update profile
+
 app.use('/api/users', userRoutes);
+// app.use('/users', userRoutes);
+
 // - POST /api/inventory/create create a material/tool
 // - GET /api/inventory/:id get a material/tool by id
 // - PUT /api/inventory/:id/update update a material/tool after getting it by id
 // -  GET /api/inventory/get  get all inventory entered by logged in user
 app.use(protect); 
-app.use('/api/inventory', inventoryRoutes);
+// app.use('/api/inventory', inventoryRoutes);
+app.use('/inventory', inventoryRoutes);
+
 app.get('/', (req, res) => res.send(`Server is ready on port ${port}`));
 
 app.use(notFound);

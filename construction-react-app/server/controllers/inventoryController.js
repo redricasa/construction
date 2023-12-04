@@ -4,7 +4,7 @@ import asyncHandler from "express-async-handler";
 
 // -----------  Controller function to add a new material
 // @desc    create material
-// @route   POST http://localhost:8000/api/inventory/create  
+// @route   POST http://localhost:3000/api/inventory/create  
 const createInventory = asyncHandler(async (req, res) => {
     // console.log('User: ---->>', req.user);
     try {
@@ -17,6 +17,10 @@ const createInventory = asyncHandler(async (req, res) => {
         res.status(201).json(newMaterial);
     } catch (error) {
         console.error(error);
+        if (error.name === 'ValidationError') {
+            console.log('there was a validation error')
+            return res.status(400).json({ error: error.message });
+        }
         res.status(500).json({ error: "Internal Server Error" });
     }
 

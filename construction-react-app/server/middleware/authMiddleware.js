@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js';
-import Inventory from '../models/inventoryModel.js';
+// import Inventory from '../models/inventoryModel.js';
 
 
 

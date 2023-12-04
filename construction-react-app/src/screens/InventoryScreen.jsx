@@ -22,7 +22,7 @@ const Inventory = () => {
     const [state, setState] = useState('');
     const [zipcode, setZipcode] = useState(0);
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     // TODO -----display all user entered inventory to select for updating--------------------------------------
     useEffect(() => {
 
@@ -37,10 +37,13 @@ const Inventory = () => {
         
         console.log('Submitting form:', itemName, price, type, bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition); // Log form data
         try {
-            await dispatch(createInventory({ itemName, price, type, bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition }));
-            console.log('Dispatch successful');
+            // await dispatch(createInventory({ itemName, price, type, bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition }));
+            await axios.post('/create', {
+                itemName,price,type,bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition
+            });
+            console.log('Dispatch successful! 😗');
         } catch (error) {
-            console.error('Error dispatching:', error);
+            console.error('Error dispatching: 😑', error);
         }
 
         setItemName('')
