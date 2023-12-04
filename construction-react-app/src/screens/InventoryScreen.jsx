@@ -20,6 +20,8 @@ const Inventory = () => {
     const [zipcode, setZipcode] = useState(0);
 
     const [inventoryItems, setInventoryItems] = useState([]);
+    const [selectedItemId, setSelectedItemId] = useState(null);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -137,7 +139,6 @@ const Inventory = () => {
                 
             <div className="container col-sm">
 
-        
                 <label htmlFor="type">* Type</label>
                 <select className="form-control form-control-sm" 
                     id="type"
@@ -156,8 +157,7 @@ const Inventory = () => {
                     <input type="number" 
                         className="form-control" 
                         aria-label="Amount (to the nearest dollar)"
-                        id='price'
-                        // step="0.01" 
+                        id='price' 
                         value={price} 
                         onChange={handlePriceChange}></input>
                 </div>
@@ -249,9 +249,12 @@ const Inventory = () => {
                         <div className="card-body">
                             <h5 className="card-title">{item.itemName}</h5>
                             <p className="card-text">Price: ${item.price} </p>
+                        console.log("Inventory Item", item)
                         
                         </div>
-                        <button type="submit" className="btn btn-warning" onClick={updateEntry}>Update</button>
+                        <button type="submit" className="btn btn-warning" 
+                        onClick={() => updateEntry(item._id)}>Update</button>
+
                         <button type="submit" className="btn btn-danger">Delete</button>
                     </div>))
                 }
