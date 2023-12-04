@@ -27,7 +27,7 @@ const Inventory = () => {
                 const data = await fetchUserInventory();
                 setInventoryItems(data);
             } catch (error) {
-                console.log("Error with useEffect's fetchData ", error);
+                console.log("Error with useEffect's fetchData ---> ", error);
             }
         };
         
@@ -238,19 +238,28 @@ const Inventory = () => {
                 Submit
             </button>
         </div>
-
             
         </form>
+
         <section className='content'>
-            {/* {inventory.length > 0 ? (
-                <div className='inventory'>
-                    {inventory.map((item) => (
-                    <InventoryItem key={item._id} item={item} />
-                    ))}
+            {inventoryItems.length > 0 ? (
+                <div className="card-container">
+                {inventoryItems.map((item) => (
+                    <div className="card" key={item._id}>
+                        <div className="card-body">
+                            <h5 className="card-title">{item.itemName}</h5>
+                            <p className="card-text">Price: ${item.price} </p>
+                        
+                        </div>
+                        <button type="submit" className="btn btn-warning">Update</button>
+                        <button type="submit" className="btn btn-danger">Delete</button>
+                    </div>))
+                }
                 </div>
+
             ) : (
                 <h3>You have not entered any materials/tools 😗</h3>
-            )} */}
+            )}
         </section>
 
         </>
