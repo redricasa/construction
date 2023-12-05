@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from 'react'
 import axios from 'axios';
-import { fetchUserInventory, updateEntry } from '../utils/api'
+import { fetchUserInventory, updateEntry, deleteEntry } from '../utils/api'
 
 
 const Inventory = () => {
@@ -20,7 +20,7 @@ const Inventory = () => {
     const [zipcode, setZipcode] = useState(0);
 
     const [inventoryItems, setInventoryItems] = useState([]);
-    const [selectedItemId, setSelectedItemId] = useState(null);
+    // const [selectedItemId, setSelectedItemId] = useState(null);
 
 
     useEffect(() => {
@@ -249,13 +249,13 @@ const Inventory = () => {
                         <div className="card-body">
                             <h5 className="card-title">{item.itemName}</h5>
                             <p className="card-text">Price: ${item.price} </p>
-                        console.log("Inventory Item", item)
                         
                         </div>
                         <button type="submit" className="btn btn-warning" 
                         onClick={() => updateEntry(item._id)}>Update</button>
 
-                        <button type="submit" className="btn btn-danger">Delete</button>
+                        <button type="submit" className="btn btn-danger"
+                        onClick={() => deleteEntry(item._id)}>Delete</button>
                     </div>))
                 }
                 </div>

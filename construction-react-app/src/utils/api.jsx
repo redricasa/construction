@@ -15,16 +15,25 @@ const fetchUserInventory = async () => {
 const updateEntry = async (id, data ) => {
     try {
         const response = await axios.put(`/api/inventory/${id}/update`);
+
         return response.data;
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error: ', error);
         throw error;
     }
 };
 
+const deleteEntry = async (id) => {
+    try {
+        await axios.delete(`/api/inventory/${itemId}/delete`);
+        console.log('Item deleted 👍🏾');
+    } catch (error) {
+        console.error('Error deleting entry:', error);
+    }
+}
 
 export {
     fetchUserInventory,
-    updateEntry
-    
+    updateEntry,
+    deleteEntry
 };
