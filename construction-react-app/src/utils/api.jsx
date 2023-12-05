@@ -23,12 +23,12 @@ const updateEntry = async (id, data ) => {
     }
 };
 
-const deleteEntry = async (id) => {
+const deleteEntry = async (itemId) => {
     try {
         await axios.delete(`/api/inventory/${itemId}/delete`);
         console.log('Item deleted 👍🏾');
     } catch (error) {
-        console.error('Error deleting entry:', error);
+        console.error('Error deleting entry: ', error);
     }
 }
 

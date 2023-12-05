@@ -6,14 +6,11 @@ import asyncHandler from "express-async-handler";
 // @desc    create material
 // @route   POST http://localhost:3000/api/inventory/create  
 const createInventory = asyncHandler(async (req, res) => {
-    // console.log('User: ---->>', req.user);
     try {
         const userId = req.user.id;
-        // Extract data from the request body
         const { bulk, type, condition, itemName,  purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode} = req.body;
 
         const newMaterial = await Inventory.create({ user: userId, bulk, type, condition, itemName,  purchaseDate, energyScore, price, quantity, purchaseOrderNo, street, city, state, zipcode});
-        // Respond with the saved material
         res.status(201).json(newMaterial);
     } catch (error) {
         console.error(error);
@@ -23,7 +20,6 @@ const createInventory = asyncHandler(async (req, res) => {
         }
         res.status(500).json({ error: "Internal Server Error" });
     }
-
 });
 
 // ------------ Update material find by item ID ----------
@@ -40,12 +36,10 @@ const updateInventory = asyncHandler(async (req, res) => {
         material.price = req.body.price || material.price;
         material.quantity = req.body.quantity || material.quantity;
         material.purchaseOrderNo = req.body.purchaseOrderNo || material.purchaseOrderNo;
-
         material.street = req.body.street || material.street;
         material.city = req.body.city || material.city;
         material.state = req.body.state || material.state;
         material.zipcode = req.body.zipcode || material.zipcode;
-
         material.condition = req.body.condition || material.condition;
 
         const newMaterial = await material.save()
@@ -76,30 +70,42 @@ const updateInventory = asyncHandler(async (req, res) => {
 // GET http://localhost:8000/api/inventory/:id
 // @route {{baseURL}}/65646191f6f578b0f306a6c4
 const getInventoryById = asyncHandler(async (req, res) => {
-    
     const material = await Inventory.findById(req.params.id);
 
     if(!material) {
         res.status(400);
         throw new Error('getMaterialById--- material not found or null')
     }
-
     res.status(200).json(material);
-
 });
 
 //  ------ getAllInventoryByUser
 // GET http://localhost:8000/api/inventory/get
 const getAllInventoryByUser = asyncHandler(async (req, res) => {
-    // console.log('User: ---->>', req.user);
     try {
-        
         const allInventory = await Inventory.find({ user: req.user.id});
-    
         res.status(200).json(allInventory);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Internal Server Error - /get" });
+    }
+})
+
+// DELETE http://localhost:8000/api/inventory/:id/delete
+const deleteInventory = asyncHandler(async (req, res) => {
+    const itemId = req.params.id;
+    const inventoryEntry = await Inventory.findById(itemId);
+
+    try {
+        const result = await Inventory.deleteOne({ _id: itemId });
+        if (result.deletedCount === 1) {
+            res.json({ message: `Item id ${itemId} deleted 👍🏾` });
+        } else {
+            res.status(404).json({ message: 'Inventory entry not found' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 })
 
@@ -108,5 +114,6 @@ export {
     createInventory, 
     getInventoryById, 
     updateInventory, 
-    getAllInventoryByUser 
+    getAllInventoryByUser,
+    deleteInventory
 }
