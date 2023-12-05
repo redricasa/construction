@@ -21,7 +21,75 @@ const Inventory = () => {
 
     const [inventoryItems, setInventoryItems] = useState([]);
     const [selectedItemId, setSelectedItemId] = useState(null);
+    const [formData, setFormData] = useState({
+        itemName: '',
+        price: 0.0,
+        type: '',
+        bulk: '',
+        condition: '',
+        purchaseDate: null,
+        energyScore: 0,
+        quantity: 0,
+        purchaseOrderNo: 0,
+        street: '',
+        city: '',
+        state: '',
+        zipcode: 0,
+    });
 
+    const handleUpdateClick = (item) => {
+        setSelectedItemId(item._id);
+
+        setFormData({
+            itemName: item.itemName,
+            price: item.price,
+            type: item.type,
+            bulk: item.bulk,
+            condition: item.condition,
+            purchaseDate: item.purchaseDate,
+            energyScore: item.energyScore,
+            quantity: item.quantity,
+            purchaseOrderNo: item.purchaseOrderNo,
+            street: item.street,
+            city: item.city,
+            state: item.state,
+            zipcode: item.zipcode,
+        });
+    };
+
+    const handleUpdateSubmit = async (e) => {
+        e.preventDefault();
+    
+        try {
+          // Call the updateEntry function with the selectedItemId and formData
+            await updateEntry(selectedItemId, formData);
+        
+            // Perform any additional actions after successful update
+        
+            console.log('Item updated successfully!');
+        
+            // Clear the form data and selectedItemId
+            setFormData({
+                itemName: '',
+                price: 0.0,
+                type: '',
+                bulk: '',
+                condition: '',
+                purchaseDate: null,
+                energyScore: 0,
+                quantity: 0,
+                purchaseOrderNo: 0,
+                street: '',
+                city: '',
+                state: '',
+                zipcode: 0,
+            });
+            setSelectedItemId(null);
+        } catch (error) {
+            console.error('Error updating entry:', error);
+        }
+    };
+    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -267,16 +335,9 @@ const Inventory = () => {
                         <button 
                             type="submit" 
                             className="btn btn-warning" 
-                            onClick={() => {
-                                setSelectedItemId(item._id);
-                                // Assuming `setFormData` is a state update function for your form data
-                                setFormData({
-                                    itemName: item.itemName,
-                                    bulk: item.bulk,
-                                    type: item.type,
-                                    // ... other fields
-                                });
-                            }}>Update</button>
+                            onClick={() => handleUpdateSubmit}
+                                
+                            >Update</button>
 
                         <button 
                             type="submit" 
