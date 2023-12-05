@@ -267,7 +267,16 @@ const Inventory = () => {
                         <button 
                             type="submit" 
                             className="btn btn-warning" 
-                            onClick={() => setSelectedItemId(item._id)}>Update</button>
+                            onClick={() => {
+                                setSelectedItemId(item._id);
+                                // Assuming `setFormData` is a state update function for your form data
+                                setFormData({
+                                    itemName: item.itemName,
+                                    bulk: item.bulk,
+                                    type: item.type,
+                                    // ... other fields
+                                });
+                            }}>Update</button>
 
                         <button 
                             type="submit" 

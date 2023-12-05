@@ -12,9 +12,9 @@ const fetchUserInventory = async () => {
     }
 };
 
-const updateEntry = async (id, data ) => {
+const updateEntry = async (id, updatedData ) => {
     try {
-        const response = await axios.put(`/api/inventory/${id}/update`);
+        const response = await axios.put(`/api/inventory/${id}/update`, updatedData);
 
         return response.data;
     } catch (error) {
