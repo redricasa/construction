@@ -98,7 +98,7 @@ const Inventory = () => {
     };
     // TODO -> prepopulate in a separate form on the same page
     const onSave = async (e) => {
-        console.log(" item id from updateForm state", updateForm._id);
+        
         e.preventDefault();
         if (!selectedItemId) {
             console.error('selectedItemId is null or undefined');
@@ -106,9 +106,21 @@ const Inventory = () => {
         }
 
         try {
-            console.log("item id--->");//no access to data returned by handleUpdateClick
+            console.log("item id---> ", selectedItemId);//no access to data returned by handleUpdateClick
             await axios.put(`/api/inventory/${selectedItemId}/update`, {
-                itemName,price,type,bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition
+                itemName: updateForm.itemName,
+                price: updateForm.price,
+                type: updateForm.type,
+                bulk: updateForm.bulk,
+                purchaseDate: updateForm.purchaseDate,
+                purchaseOrderNo: updateForm.purchaseOrderNo,
+                quantity: updateForm.quantity,
+                energyScore: updateForm.energyScore,
+                state: updateForm.state,
+                street: updateForm.street,
+                zipcode: updateForm.zipcode,
+                city: updateForm.city,
+                condition: updateForm.condition,
             });
             console.log("successful update! Finally! 🙏🏾");
         } catch (error) {
