@@ -75,6 +75,7 @@ const Inventory = () => {
                 type: response.data.type,
                 bulk: response.data.bulk,
             });
+            setSelectedItemId(itemId);
         } catch (error) {
             console.error('Error getting one item by _id or returning response.data: ', error);
             throw error;
