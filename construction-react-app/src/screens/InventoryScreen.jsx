@@ -97,11 +97,19 @@ const Inventory = () => {
     };
     // TODO -> prepopulate in a separate form on the same page
     const onSave = async (e) => {
+        console.log(" item id from updateForm state", updateForm._id);
         e.preventDefault();
+        if (!selectedItemId) {
+            console.error('selectedItemId is null or undefined');
+            return;
+        }
 
         try {
             console.log("item id--->");//no access to data returned by handleUpdateClick
-            await axios.put(`/api/inventory/update`, data);
+            await axios.put(`/api/inventory/${selectedItemId}/update`, {
+                itemName,price,type,bulk, purchaseDate, purchaseOrderNo, quantity, energyScore, state, street, zipcode, city, condition
+            });
+            console.log("successful update! Finally! 🙏🏾");
         } catch (error) {
             console.error("there was an error sending update 😑", error);
         }
@@ -138,11 +146,20 @@ const Inventory = () => {
         }
     };
 
-    const formatDate = (date) => {
+    const formatDate = (dateString) => {
+        if (!dateString) return '';
+
+        const date = new Date(dateString);
+        
+        if (isNaN(date.getTime())) {
+            // Invalid date, return an empty string or handle accordingly
+            return '';
+        }
+
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
+            return `${year}-${month}-${day}`;
     };
 
     return (
@@ -388,8 +405,8 @@ const Inventory = () => {
                     className="form-control"
                     type="date"
                     id="purchase"
-                    value={updateForm.purchaseDate}
-                    onChange={(e) => setUpdateForm({ ...updateForm, purchaseDate: e.target.value })}
+                    value={updateForm.purchaseDate ? formatDate(updateForm.purchaseDate) : ''}
+                    onChange={(e) => setUpdateForm({ ...updateForm, purchaseDate: new Date(e.target.value) })}
                     placeholder="YYYY-mm-dd"
                 />
 
