@@ -1,11 +1,9 @@
-// EditInventoryForm.jsx
-
 import React, { useState, useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import axios from "axios";
 
 
-export const UpdateInventoryScreen = () => {
+const UpdateInventoryScreen = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -48,21 +46,23 @@ export const UpdateInventoryScreen = () => {
   };
 
   const handleSubmitAndRedirect = () => {
+    console.log("Submitting with ID:", id);
+    console.log("Submitting data:", updatedInventoryEntry);
     const data = { updatedInventoryEntry, id };
 
     try {
-      axios.put(`/${id}/update`, data);
+      axios.put(`/api/inventory/${id}/update`, data);
     } catch (error) {
-      console.error(error.response.data);
+      console.error("there was an error sending update 😑", error.response.data);
     }
 
-    navigate(`/inventory`);
+    navigate(`/`);
   };
 
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get(`https://your-backend/inventory/${id}`);
+        const { data } = await axios.get(`${id}`);
         setCurrentInventoryEntry(data.inventoryEntry);
       } catch (error) {
         console.error(error.response.data);
@@ -105,3 +105,6 @@ export const UpdateInventoryScreen = () => {
     </form>
   );
 };
+
+
+export default UpdateInventoryScreen;

@@ -14,6 +14,7 @@ import Home from './screens/HomePageScreen';
 import LoginUser from './screens/LoginUserScreen';
 import Register from './screens/RegisterUserScreen';
 import Inventory from './screens/InventoryScreen';
+import UpdateInventory from './screens/UpdateInventoryScreen';
 import ProfileScreen from './screens/profileScreen';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -26,6 +27,9 @@ const router = createBrowserRouter(
       <Route path='/login' element={<LoginUser />} />
       <Route path='/register' element={<Register />} />
       <Route path='/inventory' element={<Inventory />} />
+        {/* <Route path='/update' element={<UpdateInventory />} />
+      </Route> */}
+      
       <Route path='' element={<PrivateRoute/>}>
         <Route path='/profile' element={<ProfileScreen />} />
       </Route>
