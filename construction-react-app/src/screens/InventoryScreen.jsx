@@ -24,16 +24,20 @@ const Inventory = () => {
     const [inventoryItems, setInventoryItems] = useState([])
     const [selectedItemId, setSelectedItemId] = useState(null);
 
-    const [createForm, setCreateForm] = useState({
-        itemName: '',
-        price: 0.0,
-        // ... other fields
-    });
-
     const [updateForm, setUpdateForm] = useState({
         itemName: '',
         price: 0.0,
-        // ... other fields
+        purchaseDate: '',
+        purchaseOrderNo: 0,
+        quantity: 0,
+        street: '',
+        state:'',
+        city:'',
+        zipcode:'',
+        energyScore:0,
+        condition: 'Used',
+        type: 'Material',
+        bulk: 'Yes',
     });
 
 
@@ -55,8 +59,22 @@ const Inventory = () => {
         try {
             const response = await axios.get(`/api/inventory/${itemId}`)
             console.log("get one item by id successful! 😊", response);
-            // TODO return 
-            setUpdateForm(response.data);
+            
+            setUpdateForm({
+                itemName: response.data.itemName,
+                price: response.data.price,
+                purchaseDate: response.data.purchaseDate,
+                purchaseOrderNo: response.data.purchaseOrderNo,
+                quantity: response.data.quantity,
+                street: response.data.street,
+                state: response.data.state,
+                city: response.data.city,
+                zipcode: response.data.zipcode,
+                energyScore: response.data.energyScore,
+                condition: response.data.condition,
+                type: response.data.type,
+                bulk: response.data.bulk,
+            });
         } catch (error) {
             console.error('Error getting one item by _id or returning response.data: ', error);
             throw error;
@@ -350,15 +368,16 @@ const Inventory = () => {
                     className="form-control"
                     type='text'
                     id='itemName'
-                    value={itemName}
-                    onChange={(e) => setItemName(e.target.value)}
+                    value={updateForm.itemName}
+                    onChange={(e) => setUpdateForm({ ...updateForm, itemName: e.target.value })}
                 ></input>
 
                 <label htmlFor="bulk">* Bulk Purchase</label>
                 <select className="form-control form-control-sm" 
                     id="bulk"
-                    value={bulk} 
-                    onChange={(e) => setBulk( e.target.value)}>
+                    value={updateForm.bulk} 
+                    onChange={(e) => setUpdateForm({ ...updateForm, bulk: e.target.value })}
+                    >
                     <option selected>Is it a bulk purchase?</option>
                     <option>Yes</option>
                     <option>No</option>
@@ -369,8 +388,8 @@ const Inventory = () => {
                     className="form-control"
                     type="date"
                     id="purchase"
-                    value={purchaseDate ? formatDate(purchaseDate) : ''}
-                    onChange={(e) => setPurchaseDate(new Date(e.target.value))}
+                    value={updateForm.purchaseDate}
+                    onChange={(e) => setUpdateForm({ ...updateForm, purchaseDate: e.target.value })}
                     placeholder="YYYY-mm-dd"
                 />
 
@@ -379,15 +398,17 @@ const Inventory = () => {
                 <input className="form-control"
                     type='number'
                     id='energyScore'
-                    value={energyScore}
-                    onChange={(e) => setEnergyScore(e.target.value)}></input>
+                    value={updateForm.energyScore}
+                    onChange={(e) => setUpdateForm({ ...updateForm, energyScore: e.target.value })}
+                    ></input>
 
                 <label htmlFor="purchaseorderno">Purchase Order #</label>
                 <input className="form-control"
                     type="number"
-                    value={purchaseOrderNo} 
+                    value={updateForm.purchaseOrderNo} 
                     id='purchaseorderno'
-                    onChange={(e) => setPurchaseOrderNo(e.target.value)}></input>
+                    onChange={(e) => setUpdateForm({ ...updateForm, purchaseOrderNo: e.target.value })}
+                    ></input>
             </div>
 
             <div className="container col-sm">
@@ -395,8 +416,9 @@ const Inventory = () => {
                 <label htmlFor="type">* Type</label>
                 <select className="form-control form-control-sm" 
                     id="type"
-                    value={type} 
-                    onChange={(e) => setType( e.target.value)}>
+                    value={updateForm.type} 
+                    onChange={(e) => setUpdateForm({ ...updateForm, type: e.target.value })}
+                    >
                     <option selected>Choose inventory type</option>
                     <option>Material</option>
                     <option>Tool</option>
@@ -411,15 +433,18 @@ const Inventory = () => {
                         className="form-control" 
                         aria-label="Amount (to the nearest dollar)"
                         id='price' 
-                        value={price} 
-                        onChange={handlePriceChange}></input>
+                        value={updateForm.price} 
+                        // onChange={handlePriceChange}
+                        onChange={(e) => setUpdateForm({ ...updateForm, price: e.target.value })}
+                        ></input>
                 </div>
 
                 <label htmlFor="condition">* Condition</label>
                 <select className="form-control form-control-sm" 
                     id="condition"
-                    value={condition} 
-                    onChange={(e) => setCondition( e.target.value)}>
+                    value={updateForm.condition} 
+                    onChange={(e) => setUpdateForm({ ...updateForm, condition: e.target.value })}
+                    >
                     <option selected>Choose inventory condition</option>
                     <option>Used</option>
                     <option>New</option>
@@ -428,9 +453,10 @@ const Inventory = () => {
                 <label htmlFor="quantity">Quantity</label>
                 <input className="form-control"
                     type="number"
-                    value={quantity} 
+                    value={updateForm.quantity} 
                     id='quantity'
-                    onChange={(e) => setQuantity(e.target.value)}></input>
+                    onChange={(e) => setUpdateForm({ ...updateForm, quantity: e.target.value })}
+                    ></input>
 
             
                 <label  className="form-label">
@@ -442,8 +468,8 @@ const Inventory = () => {
                     id="street"
                     name="street"
                     placeholder="street"
-                    value={street}
-                    onChange={(e) => setStreet(e.target.value)}
+                    value={updateForm.street}
+                    onChange={(e) => setUpdateForm({ ...updateForm, street: e.target.value })}
                 />
                 
                 <div className="row">
@@ -451,20 +477,19 @@ const Inventory = () => {
                     <div className="col-5" >
                         <input
                         type='text'
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
+                        value={updateForm.city}
+                        onChange={(e) => setUpdateForm({ ...updateForm, city: e.target.value })}
                         className="form-control"
                         id="city"
                         name="city"
                         placeholder="city"
-
                         />
                     </div>
                     <div className="col-3">
                         <input
                         type='text'
-                        value={state}
-                        onChange={(e) => setState(e.target.value)}
+                        value={updateForm.state}
+                        onChange={(e) => setUpdateForm({ ...updateForm, state: e.target.value })}
                         className="form-control"
                         id="state"
                         name="state"
@@ -475,8 +500,8 @@ const Inventory = () => {
                     <div className="col-3" >
                         <input
                         type="number"
-                        value={zipcode}
-                        onChange={(e) => setZipcode(e.target.value)}
+                        value={updateForm.zipcode}
+                        onChange={(e) => setUpdateForm({ ...updateForm, zipcode: e.target.value })}
                         className="form-control"
                         id="zipcode"
                         name="zipcode"
@@ -488,7 +513,7 @@ const Inventory = () => {
                 </div>
             </div>
             <button type="submit" className="btn btn-success">
-                Save
+                Save edited item
             </button>
         </div>
             
